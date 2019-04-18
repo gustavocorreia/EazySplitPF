@@ -1,9 +1,10 @@
-package br.com.eazysplit.pf
+package br.com.eazysplit.pf.ui
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
+import br.com.eazysplit.pf.R
 
 class MainActivity : AppCompatActivity() {
 
