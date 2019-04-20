@@ -3,8 +3,10 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="facebook_login">Log In Facebook</string>
+    <string name="button_facebook">Log In Facebook</string>
+    <string name="edittext_username">Phone or E-mail</string>
+    <string name="edittext_password">Password</string>
+    <string name="button_login">Log In</string>
     <string name="logo">EAZY SPLIT</string>
-    <string name="placeholderUserName">Phone or E-mail</string>
-    <string name="placeholderPassword">Password</string>
+
 </resources>

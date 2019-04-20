@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="button_facebook">Entrar com Facebook</string>
+    <string name="button_login">Entrar</string>
+    <string name="edittext_username">Telefone ou E-mail</string>
+    <string name="edittext_password">Senha</string>
+</resources>
