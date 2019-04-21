@@ -17,4 +17,52 @@
         <item name="windowActionBar">false</item>
     </style>
 
+    <style name="margin_default">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">22dp</item>
+        <item name="android:layout_marginRight">22dp</item>
+    </style>
+
+    <style name="header_title" parent="margin_default">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">#414C59</item>
+    </style>
+
+    <style name="edit_text" parent="margin_default">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="button_login" parent="margin_default">
+        <item name="android:background">#6CAA34</item>
+        <item name="android:text">@string/button_login</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="text_link" parent="margin_default">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="button_facebook" parent="margin_default">
+        <item name="android:background">@color/com_facebook_button_background_color</item>
+        <item name="android:text">@string/button_facebook</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="button_google" parent="margin_default">
+        <item name="android:background">#DA3A2F</item>
+        <item name="android:text">@string/button_google</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>
