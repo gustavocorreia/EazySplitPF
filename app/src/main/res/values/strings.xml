@@ -4,9 +4,29 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="button_facebook">Log In Facebook</string>
+    <string name="button_google">Log In Google</string>
     <string name="edittext_username">Phone or E-mail</string>
+    <string name="edittext_email">E-mail</string>
     <string name="edittext_password">Password</string>
     <string name="button_login">Log In</string>
-    <string name="logo">EAZY SPLIT</string>
+    <string name="link_forgotpass">Forgot my password</string>
+    <string name="edittext_password_confirmation">Password Confirmation</string>
+    <string name="edittext_phone">Cell Phone</string>
+    <string name="edittext_zipcode">ZIP Code</string>
+    <string name="edittext_address">Endereço</string>
+    <string name="edittext_address_number">Number</string>
+    <string name="edittext_address_city">City</string>
+    <string name="edittext_address_neighborhood">Neigthborhood</string>
+    <string name="edittext_address_complement">Complement</string>
+    <string name="button_search">Search</string>
+    <string name="edittext_insert">Insert</string>
+    <string name="edittext_address_state">State</string>
+    <string name="textview_language">Language</string>
+    <string name="text_or">OR</string>
+    <string name="facebook_app_id">491028978093975</string>
+    <string name="fb_login_protocol_scheme">fb491028978093975</string>
+    <string name="request_id_token">1007881946799-sihkjr6a2d1re0nlnipfg19g2dmsv8cq.apps.googleusercontent.com</string>
+    <string name="text_name">EAZY÷SPLIT</string>
+    <string name="about_text">IT IS AN APPLICATION FOR DIVIDING ACCOUNTS IN BARS OR RESTAURANTS REGISTERED IN THE APPLICATION, YOU MAY INVITE FRIENDS TO A TABLE WHERE EACH ONE CAN MAKE YOUR APPLICATION FOR THE APPLICATION AND YOU CAN PAY YOUR PROPERTY ACCOUNT OR DIVIDE RIGHTLY WITH YOUR FRIENDS.</string>
 
 </resources>

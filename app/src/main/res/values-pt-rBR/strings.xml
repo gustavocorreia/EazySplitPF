@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Eazy Split</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notificações</string>
     <string name="button_facebook">Entrar com Facebook</string>
+    <string name="button_google">Entrar com Google</string>
     <string name="button_login">Entrar</string>
     <string name="edittext_username">Telefone ou E-mail</string>
+    <string name="edittext_email">E-mail</string>
     <string name="edittext_password">Senha</string>
+    <string name="link_forgotpass">Esqueci minha senha</string>
+    <string name="edittext_password_confirmation">Confirme sua senha</string>
+    <string name="edittext_phone">Celular</string>
+    <string name="edittext_zipcode">CEP</string>
+    <string name="edittext_address">Endereço</string>
+    <string name="edittext_address_number">Nº</string>
+    <string name="edittext_address_city">Cidade</string>
+    <string name="edittext_address_neighborhood">Bairro</string>
+    <string name="edittext_address_complement">Complemento</string>
+    <string name="button_search">Pesquisar</string>
+    <string name="edittext_insert">Incluir</string>
+    <string name="edittext_address_state">UF</string>
+    <string name="textview_language">Language</string>
+    <string name="text_or">OU</string>
+    <string name="facebook_app_id">491028978093975</string>
+    <string name="fb_login_protocol_scheme">fb491028978093975</string>
+    <string name="request_id_token">1007881946799-sihkjr6a2d1re0nlnipfg19g2dmsv8cq.apps.googleusercontent.com</string>
+    <string name="text_name">EAZY÷SPLIT</string>
+    <string name="about_text">É UM APLICATIVO PARA DIVISÃO DE CONTAS  EM  BARES OU RESTAURANTES  CADASTRADOS NO APLICATIVO, USUÁRIO PODERÁ CONVIDAR  AMIGOS PARA  UMA MESA ONDE CADA UM PODE REALIZAR SEU PEDIDO PELO APLICATIVO E  PODE PAGAR SUA PROPRIA CONTA OU DIVIDIR DE FORMA JUSTA COM SEUS AMIGOS.</string>
 </resources>
