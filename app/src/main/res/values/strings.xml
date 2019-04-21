@@ -24,6 +24,7 @@
     <string name="textview_language">Language</string>
     <string name="text_or">OR</string>
     <string name="link_register">Create New Cliente</string>
+    <string name="api_service">https://viacep.com.br/</string>
     <string name="facebook_app_id">491028978093975</string>
     <string name="fb_login_protocol_scheme">fb491028978093975</string>
     <string name="request_id_token">1007881946799-sihkjr6a2d1re0nlnipfg19g2dmsv8cq.apps.googleusercontent.com</string>
