@@ -9,6 +9,8 @@
     <string name="button_login">Entrar</string>
     <string name="edittext_username">Telefone ou E-mail</string>
     <string name="edittext_email">E-mail</string>
+    <string name="edittext_name">Nome</string>
+    <string name="edittext_birth_date">Data de Nasc.</string>
     <string name="edittext_password">Senha</string>
     <string name="link_forgotpass">Esqueci minha senha</string>
     <string name="edittext_password_confirmation">Confirme sua senha</string>
@@ -19,6 +21,7 @@
     <string name="edittext_address_city">Cidade</string>
     <string name="edittext_address_neighborhood">Bairro</string>
     <string name="edittext_address_complement">Complemento</string>
+    <string name="edittext_search_restaurant">buscar restaurantes</string>
     <string name="button_search">Pesquisar</string>
     <string name="edittext_insert">Incluir</string>
     <string name="edittext_address_state">UF</string>
@@ -26,6 +29,7 @@
     <string name="text_or">OU</string>
     <string name="link_register">Criar Novo Usuário</string>
     <string name="api_service">https://viacep.com.br/</string>
+    <string name="button_register">Cadastrar</string>
     <string name="facebook_app_id">491028978093975</string>
     <string name="fb_login_protocol_scheme">fb491028978093975</string>
     <string name="request_id_token">1007881946799-sihkjr6a2d1re0nlnipfg19g2dmsv8cq.apps.googleusercontent.com</string>
