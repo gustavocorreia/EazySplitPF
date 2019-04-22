@@ -25,8 +25,9 @@
     <string name="edittext_insert">Insert</string>
     <string name="edittext_address_state">State</string>
     <string name="textview_language">Language</string>
+    <string name="textview_launch">Launch</string>
     <string name="text_or">OR</string>
-    <string name="link_register">Create New Cliente</string>
+    <string name="link_register">Create New Customer</string>
     <string name="api_service">https://viacep.com.br/</string>
     <string name="button_register">Cadastrar</string>
     <string name="facebook_app_id">491028978093975</string>
