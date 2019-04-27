@@ -35,7 +35,7 @@
     </style>
 
     <style name="button_login" parent="margin_default">
-        <item name="android:background">#6CAA34</item>
+        <item name="android:background">#77D353</item>
         <item name="android:text">@string/button_login</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:layout_marginTop">20dp</item>
@@ -45,7 +45,7 @@
     <style name="text_link" parent="margin_default">
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginBottom">10dp</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorLink</item>
         <item name="android:textSize">18sp</item>
     </style>
 
@@ -58,7 +58,7 @@
     </style>
 
     <style name="button_google" parent="margin_default">
-        <item name="android:background">#DA3A2F</item>
+        <item name="android:background">@color/colorGoogle</item>
         <item name="android:text">@string/button_google</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:layout_marginTop">20dp</item>
