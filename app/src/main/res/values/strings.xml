@@ -25,7 +25,7 @@
     <string name="edittext_insert">Insert</string>
     <string name="edittext_address_state">State</string>
     <string name="textview_language">Language</string>
-    <string name="textview_launch">Launch</string>
+    <string name="textview_launch">LAUNCH: IN DEVELOPMENT</string>
     <string name="text_or">OR</string>
     <string name="link_register">Create New Customer</string>
     <string name="api_service">https://viacep.com.br/</string>
@@ -34,10 +34,13 @@
     <string name="fb_login_protocol_scheme">fb491028978093975</string>
     <string name="request_id_token">1007881946799-sihkjr6a2d1re0nlnipfg19g2dmsv8cq.apps.googleusercontent.com</string>
     <string name="text_name">EAZY÷SPLIT</string>
-    <string name="about_text">IT IS AN APPLICATION FOR DIVIDING ACCOUNTS IN BARS OR RESTAURANTS REGISTERED IN THE
+    <string name="about_text">  IT IS AN APPLICATION FOR DIVIDING ACCOUNTS IN BARS OR RESTAURANTS REGISTERED IN THE
         APPLICATION, YOU MAY INVITE FRIENDS TO A TABLE WHERE EACH ONE CAN MAKE YOUR APPLICATION FOR THE APPLICATION AND
         YOU CAN PAY YOUR PROPERTY ACCOUNT OR DIVIDE RIGHTLY WITH YOUR FRIENDS.
     </string>
+    <string name="textview_developer">DEVELOPED BY: EAZYSPLIT 17MOB TEAM</string>
+    <string name="textview_version">VERSION 1.0.0</string>
+    <string name="textview_owner">PRODUCT OWNER: EAZYSPLIT 17MOB TEAM</string>
     <string name="title_activity_maps">Map</string>
 
     <!-- TODO: Remove or change this placeholder text -->

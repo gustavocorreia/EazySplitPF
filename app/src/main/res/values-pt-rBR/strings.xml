@@ -26,7 +26,7 @@
     <string name="edittext_insert">Incluir</string>
     <string name="edittext_address_state">UF</string>
     <string name="textview_language">Idioma</string>
-    <string name="textview_launch">Lançamento</string>
+    <string name="textview_launch">LANÇAMENTO: EM DESENVOLVIMENTO</string>
     <string name="text_or">OU</string>
     <string name="link_register">Criar Novo Usuário</string>
     <string name="api_service">https://viacep.com.br/</string>
@@ -35,8 +35,10 @@
     <string name="fb_login_protocol_scheme">fb491028978093975</string>
     <string name="request_id_token">1007881946799-sihkjr6a2d1re0nlnipfg19g2dmsv8cq.apps.googleusercontent.com</string>
     <string name="text_name">EAZY÷SPLIT</string>
-    <string name="about_text">É UM APLICATIVO PARA DIVISÃO DE CONTAS  EM  BARES OU RESTAURANTES  CADASTRADOS NO APLICATIVO, USUÁRIO PODERÁ CONVIDAR  AMIGOS PARA  UMA MESA ONDE CADA UM PODE REALIZAR SEU PEDIDO PELO APLICATIVO E  PODE PAGAR SUA PROPRIA CONTA OU DIVIDIR DE FORMA JUSTA COM SEUS AMIGOS.</string>
-
+    <string name="about_text">  É UM APLICATIVO PARA DIVISÃO DE CONTAS  EM  BARES OU RESTAURANTES  CADASTRADOS NO APLICATIVO, USUÁRIO PODERÁ CONVIDAR  AMIGOS PARA  UMA MESA ONDE CADA UM PODE REALIZAR SEU PEDIDO PELO APLICATIVO E  PODE PAGAR SUA PROPRIA CONTA OU DIVIDIR DE FORMA JUSTA COM SEUS AMIGOS.</string>
+    <string name="textview_developer">DESENVOLVIDO POR: EQUIPE EAZYSPLIT 17MOB</string>
+    <string name="textview_version">VERSÃO 1.0.0</string>
+    <string name="textview_owner">PROPRIETÁRIO: EQUIPE EAZYSPLIT 17MOB</string>
     <string name="title_activity_maps">Map</string>
 
     <!-- TODO: Remove or change this placeholder text -->
