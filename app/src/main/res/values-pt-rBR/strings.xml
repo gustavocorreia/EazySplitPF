@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Eazy Split</string>
+    <string name="about_easysplit">Sobre a EazySplit</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notificações</string>
+    <string name="title_settings">Configurações</string>
     <string name="button_facebook">Entrar com Facebook</string>
     <string name="button_google">Entrar com Google</string>
     <string name="button_login">Entrar</string>

@@ -16,6 +16,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Default">
+        <activity android:name=".ui.SettingsActivity">
+        </activity>
+        <activity android:name=".ui.CheckInActivity">
+        </activity>
         <activity android:name=".ui.RestaurantActivity">
         </activity>
         <!--

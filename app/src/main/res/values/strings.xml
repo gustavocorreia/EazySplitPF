@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Eazy Split</string>
+    <string name="about_easysplit">About EazySplit</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_settings">Settings</string>
     <string name="button_facebook">Log In Facebook</string>
     <string name="button_google">Log In Google</string>
     <string name="edittext_username">Phone or E-mail</string>
@@ -34,7 +36,7 @@
     <string name="fb_login_protocol_scheme">fb491028978093975</string>
     <string name="request_id_token">1007881946799-sihkjr6a2d1re0nlnipfg19g2dmsv8cq.apps.googleusercontent.com</string>
     <string name="text_name">EAZY÷SPLIT</string>
-    <string name="about_text">  IT IS AN APPLICATION FOR DIVIDING ACCOUNTS IN BARS OR RESTAURANTS REGISTERED IN THE
+    <string name="about_text">IT IS AN APPLICATION FOR DIVIDING ACCOUNTS IN BARS OR RESTAURANTS REGISTERED IN THE
         APPLICATION, YOU MAY INVITE FRIENDS TO A TABLE WHERE EACH ONE CAN MAKE YOUR APPLICATION FOR THE APPLICATION AND
         YOU CAN PAY YOUR PROPERTY ACCOUNT OR DIVIDE RIGHTLY WITH YOUR FRIENDS.
     </string>
