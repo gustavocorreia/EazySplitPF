@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "1007881946799",
+    "firebase_url": "https://eazysplit-fiap.firebaseio.com",
+    "project_id": "eazysplit-fiap",
+    "storage_bucket": "eazysplit-fiap.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1007881946799:android:ecb7fc764e492407",
+        "android_client_info": {
+          "package_name": "br.com.eazysplit.pf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1007881946799-sihkjr6a2d1re0nlnipfg19g2dmsv8cq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCojR_w6-AIomOjQc-C8XKw1RxpZ-fD5aw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1007881946799-sihkjr6a2d1re0nlnipfg19g2dmsv8cq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1007881946799-8q3plhuujl2kta67e06684bvldfj9r24.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.eazysplit.EazySplit"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1007881946799:android:b2bd1dd9b280d8cb",
+        "android_client_info": {
+          "package_name": "com.eazysplit.empresas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1007881946799-dfitfcnlc5qe8oakpd6b59f8buirr3lh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eazysplit.empresas",
+            "certificate_hash": "a7d9ced51c9a66f90adb567589bb47f084deb1ed"
+          }
+        },
+        {
+          "client_id": "1007881946799-sihkjr6a2d1re0nlnipfg19g2dmsv8cq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCojR_w6-AIomOjQc-C8XKw1RxpZ-fD5aw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1007881946799-sihkjr6a2d1re0nlnipfg19g2dmsv8cq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1007881946799-8q3plhuujl2kta67e06684bvldfj9r24.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.eazysplit.EazySplit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
