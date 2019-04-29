@@ -20,8 +20,7 @@ data class User (
 
     @Expose
     var birthDate: Date,
-
-    @Expose
+    
     var password: String,
 
     @Expose
