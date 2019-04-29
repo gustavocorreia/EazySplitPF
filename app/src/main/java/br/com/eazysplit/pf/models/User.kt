@@ -27,5 +27,5 @@ data class User (
     @Expose
     var url_image: String?,
 
-    var LastUpdate: Date?
+    var lastUpdate: Date?
 )
