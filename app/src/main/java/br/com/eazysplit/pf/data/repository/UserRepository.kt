@@ -2,27 +2,30 @@ package br.com.eazysplit.pf.data.repository
 
 import android.arch.lifecycle.LiveData
 import br.com.eazysplit.pf.data.local.dao.UserLocalDAO
+import br.com.eazysplit.pf.data.remote.UserDAO
 import br.com.eazysplit.pf.models.User
 import retrofit2.*
 import java.util.*
 import java.util.concurrent.Executor
 import javax.inject.*
 
-/*@Singleton
+@Singleton
 class UserRepository @Inject
-construtor (private val userDao: UserLocalDAO, private val executor: Executor){
+constructor(private val userDAO: UserDAO, private val userLocalDAO: UserLocalDAO,
+            private val executor: Executor) {
+
     companion object {
         private const val FRESH_TIMEOUT_IN_MINUTES = 3
     }
 
-    fun getUser(emailPhone: String): LiveData<User> {
-        //refreshUser(emailPhone)
-        return userDao.load(emailPhone)
+    fun getUser(userLogin: String): LiveData<User> {
+        //refreshUser(userLogin)
+        return userLocalDAO.load(userLogin)
     }
 
-    private fun refreshUser(emailPhone: String) {
+    /*private fun refreshUser(userLogin: String) {
         executor.execute {
-            val userExists = userDao.hasUser(userLogin, getMaxRefreshTime(Date())) != null
+            val userExists = userLocalDAO.hasUser(userLogin, getMaxRefreshTime(Date())) != null
             if (!userExists) {
                 webservice.getUser(userLogin).enqueue(object : Callback<User> {
                     override fun onResponse(call: Call<User>, response: Response<User>) {
@@ -33,16 +36,17 @@ construtor (private val userDao: UserLocalDAO, private val executor: Executor){
                                 userDao.save(user)
                         }
                     }
+
                     override fun onFailure(call: Call<User>, t: Throwable) {}
                 })
             }
         }
-    }
+    }*/
+
     private fun getMaxRefreshTime(currentDate: Date): Date {
         val cal = Calendar.getInstance()
         cal.time = currentDate
         cal.add(Calendar.MINUTE, -FRESH_TIMEOUT_IN_MINUTES)
         return cal.time
     }
-
-}*/
+}

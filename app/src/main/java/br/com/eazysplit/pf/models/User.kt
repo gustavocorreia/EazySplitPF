@@ -7,9 +7,8 @@ import java.util.*
 @Entity
 data class User (
     @PrimaryKey
-    var id: Int,
+    var id: UUID,
 
-    @Expose
     var name: String,
 
     @Expose
@@ -20,11 +19,12 @@ data class User (
 
     @Expose
     var birthDate: Date,
-    
+
     var password: String,
 
-    @Expose
     var url_image: String?,
+
+    var CardList: List<Card>?,
 
     var lastUpdate: Date?
 )
