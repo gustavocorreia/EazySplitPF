@@ -4,7 +4,7 @@ import br.com.eazysplit.pf.models.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
-class UserDAO{
+class UserFirebase{
 
     private lateinit var mAuth : FirebaseAuth
     private lateinit var mDB: FirebaseDatabase

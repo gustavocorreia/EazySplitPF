@@ -1,26 +1,24 @@
 package br.com.eazysplit.pf.data.repository
 
-import android.arch.lifecycle.LiveData
-import br.com.eazysplit.pf.data.local.dao.UserLocalDAO
-import br.com.eazysplit.pf.data.remote.UserDAO
+import br.com.eazysplit.pf.data.local.dao.UserDAO
+import br.com.eazysplit.pf.data.remote.UserFirebase
 import br.com.eazysplit.pf.models.User
-import retrofit2.*
 import java.util.*
 import java.util.concurrent.Executor
 import javax.inject.*
 
 @Singleton
 class UserRepository @Inject
-constructor(private val userDAO: UserDAO, private val userLocalDAO: UserLocalDAO,
+constructor(private val userFirebase: UserFirebase, private val userDAO: UserDAO,
             private val executor: Executor) {
 
     companion object {
         private const val FRESH_TIMEOUT_IN_MINUTES = 3
     }
 
-    fun getUser(userLogin: String): LiveData<User> {
+    fun getUser(userLogin: String): User {
         //refreshUser(userLogin)
-        return userLocalDAO.load(userLogin)
+        return userDAO.loadByEmail(userLogin)
     }
 
     /*private fun refreshUser(userLogin: String) {

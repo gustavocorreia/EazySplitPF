@@ -8,13 +8,13 @@ import br.com.eazysplit.pf.models.User
 import java.util.*
 
 @Dao
-interface UserLocalDAO{
+interface UserDAO{
     @Insert(onConflict = REPLACE)
     fun add(user: User)
 
-    @Query("SELECT * FROM user WHERE email = :emailPhone OR phoneNumber = :emailPhone")
-    fun load(emailPhone: String): LiveData<User>
+    @Query("SELECT * FROM user WHERE id = :userId LIMIT 1")
+    fun load(userId: UUID): User
 
-    @Query("SELECT * FROM user WHERE email = :emailPhone OR phoneNumber = :emailPhone LIMIT 1")
-    fun hasUser(emailPhone: String, lastUpdateMax: Date): User
+    @Query("SELECT * FROM user WHERE email = :userEmail LIMIT 1")
+    fun loadByEmail(userEmail: String) : User
 }

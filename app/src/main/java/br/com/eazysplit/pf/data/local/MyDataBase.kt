@@ -1,7 +1,7 @@
 package br.com.eazysplit.pf.data.local
 
 import android.arch.persistence.room.*
-import br.com.eazysplit.pf.data.local.dao.UserLocalDAO
+import br.com.eazysplit.pf.data.local.dao.UserDAO
 import br.com.eazysplit.pf.models.User
 import br.com.eazysplit.pf.util.DateConverter
 
@@ -9,7 +9,7 @@ import br.com.eazysplit.pf.util.DateConverter
 @TypeConverters(DateConverter::class)
 abstract class MyDataBase : RoomDatabase() {
 
-    abstract fun userDao() : UserLocalDAO
+    abstract fun userDao() : UserDAO
 
     companion object {
         private val INSTANCE: MyDataBase? = null
