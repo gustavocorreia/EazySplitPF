@@ -30,6 +30,8 @@
     <string name="textview_language">Idioma</string>
     <string name="textview_launch">LANÇAMENTO: EM DESENVOLVIMENTO</string>
     <string name="text_or">OU</string>
+    <string name="text_fill_fields">Preencha os campos restantes</string>
+    <string name="text_divergent_passwords">Senhas Divergentes</string>
     <string name="link_register">Criar Novo Usuário</string>
     <string name="api_service">https://viacep.com.br/</string>
     <string name="button_register">Cadastrar</string>

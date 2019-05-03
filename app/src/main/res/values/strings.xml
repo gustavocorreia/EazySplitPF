@@ -29,6 +29,8 @@
     <string name="textview_language">Language</string>
     <string name="textview_launch">LAUNCH: IN DEVELOPMENT</string>
     <string name="text_or">OR</string>
+    <string name="text_fill_fields">Fill in the remaining fields</string>
+    <string name="text_divergent_passwords">Divergent Passwords</string>
     <string name="link_register">Create New Customer</string>
     <string name="api_service">https://viacep.com.br/</string>
     <string name="button_register">Cadastrar</string>
