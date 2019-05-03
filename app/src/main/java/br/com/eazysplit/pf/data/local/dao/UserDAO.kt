@@ -13,7 +13,7 @@ interface UserDAO{
     fun add(user: User)
 
     @Query("SELECT * FROM user WHERE id = :userId LIMIT 1")
-    fun load(userId: UUID): User
+    fun load(userId: String): User
 
     @Query("SELECT * FROM user WHERE email = :userEmail LIMIT 1")
     fun loadByEmail(userEmail: String) : User

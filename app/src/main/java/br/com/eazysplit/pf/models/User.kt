@@ -7,7 +7,7 @@ import java.util.*
 @Entity
 data class User (
     @PrimaryKey
-    var id: UUID,
+    var id: String,
 
     var name: String,
 
