@@ -8,6 +8,7 @@ import br.com.eazysplit.pf.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_customer.*
+import java.util.*
 
 class CustomerActivity : AppCompatActivity() {
 
@@ -37,14 +38,44 @@ class CustomerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_customer)
 
         registerCustomer()
+        loadImage()
     }
 
     fun registerCustomer(){
         btRegister.setOnClickListener {
             if(validateFields()){
+                val user = mountUser()
+
+                val currentUser = mAuth.currentUser
+                if(currentUser == null){
+                    mAuth.createUserWithEmailAndPassword(user.email, user.password)
+                        .addOnCompleteListener {
+                            if(it.isSuccessful){
+                                completeRegister(user)
+                            } else {
+                                Toast.makeText(this@CustomerActivity, it.exception?.message, Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                }
 
             }
         }
+    }
+
+    private fun completeRegister(user: User){
+
+    }
+
+    private fun loadImage(){
+        ivCustomer.setOnClickListener {
+
+        }
+    }
+
+    private fun mountUser() : User{
+        val user = User ("", etName.text.toString(), etEmail.text.toString(), etPhone.text.toString(), Date(etBirthDate.text.toString()), etPassword.text.toString(), null, null, Date())
+
+        return user
     }
 
     private fun validateFields() : Boolean{
