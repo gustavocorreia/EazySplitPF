@@ -32,6 +32,8 @@
     <string name="text_or">OU</string>
     <string name="text_fill_fields">Preencha os campos restantes</string>
     <string name="text_divergent_passwords">Senhas Divergentes</string>
+    <string name="text_user_success">Usuário criado com sucesso!</string>
+    <string name="text_user_error">Erro ao criar o usuário</string>
     <string name="link_register">Criar Novo Usuário</string>
     <string name="api_service">https://viacep.com.br/</string>
     <string name="button_register">Cadastrar</string>
@@ -47,4 +49,18 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Configurações</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Galeria</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Compartilhar</string>
+    <string name="menu_send">Enviar</string>
 </resources>

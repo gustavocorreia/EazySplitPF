@@ -121,7 +121,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun validateFields() : Boolean {
         if (etUserName.text.toString() == "" || etPassword.text.toString() == "") {
-            Toast.makeText(this, "Preencha os campos", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, R.string.text_fill_fields, Toast.LENGTH_LONG).show()
             return false
         }
         return true

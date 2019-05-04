@@ -27,6 +27,10 @@ class UserFirebase{
 
     }
 
+    fun load(id: String) : User?{
+        return null
+    }
+
     private fun addDB(user: User){
         mReference.child("users")
     }

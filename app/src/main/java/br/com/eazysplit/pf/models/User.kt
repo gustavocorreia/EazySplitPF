@@ -11,7 +11,6 @@ data class User (
 
     var name: String,
 
-    @Expose
     var email: String,
 
     @Expose

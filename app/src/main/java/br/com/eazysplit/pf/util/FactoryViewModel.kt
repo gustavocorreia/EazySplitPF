@@ -1,3 +1,4 @@
+// Baseado no código do Professor Heider
 package br.com.eazysplit.pf.util
 
 import android.arch.lifecycle.*

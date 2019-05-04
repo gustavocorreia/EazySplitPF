@@ -1,5 +1,6 @@
 package br.com.eazysplit.pf.ui
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -28,7 +29,7 @@ class CustomerActivity : AppCompatActivity() {
     private fun loadForm(){
         val currentUser = mAuth.currentUser
         if(currentUser != null) {
-            etEmail.setText(currentUser!!.email)
+            etEmail.setText(currentUser?.email)
 
         }
     }
@@ -51,6 +52,7 @@ class CustomerActivity : AppCompatActivity() {
                     mAuth.createUserWithEmailAndPassword(user.email, user.password)
                         .addOnCompleteListener {
                             if(it.isSuccessful){
+
                                 completeRegister(user)
                             } else {
                                 Toast.makeText(this@CustomerActivity, it.exception?.message, Toast.LENGTH_SHORT).show()
@@ -63,6 +65,21 @@ class CustomerActivity : AppCompatActivity() {
     }
 
     private fun completeRegister(user: User){
+        user.id = mAuth.currentUser!!.uid
+
+        mDB.getReference("Users")
+            .child(user.id)
+            .setValue(user)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+
+                    Toast.makeText(this, R.string.text_user_success, Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                } else {
+                    Toast.makeText(this, R.string.text_user_error, Toast.LENGTH_SHORT).show()
+                }
+            }
 
     }
 

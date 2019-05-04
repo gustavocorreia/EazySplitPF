@@ -31,6 +31,8 @@
     <string name="text_or">OR</string>
     <string name="text_fill_fields">Fill in the remaining fields</string>
     <string name="text_divergent_passwords">Divergent Passwords</string>
+    <string name="text_user_success">User created successfully!</string>
+    <string name="text_user_error">Error creating user</string>
     <string name="link_register">Create New Customer</string>
     <string name="api_service">https://viacep.com.br/</string>
     <string name="button_register">Cadastrar</string>

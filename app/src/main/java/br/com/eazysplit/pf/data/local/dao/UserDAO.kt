@@ -1,4 +1,4 @@
-// Baseado no código do Professor Helder
+// Baseado no código do Professor Heider
 package br.com.eazysplit.pf.data.local.dao
 
 import android.arch.lifecycle.LiveData
@@ -12,9 +12,12 @@ interface UserDAO{
     @Insert(onConflict = REPLACE)
     fun add(user: User)
 
-    @Query("SELECT * FROM user WHERE id = :userId LIMIT 1")
-    fun load(userId: String): User
+    @Query("SELECT * FROM user WHERE id = :userId")
+    fun load(userId: String): LiveData<User>
 
-    @Query("SELECT * FROM user WHERE email = :userEmail LIMIT 1")
-    fun loadByEmail(userEmail: String) : User
+    @Query("SELECT * FROM user WHERE email = :userEmail")
+    fun loadByEmail(userEmail: String) : LiveData<User>
+
+    @Query("SELECT * FROM user WHERE id = :userId AND lastUpdate > :lastUpdateMax LIMIT 1")
+    fun hasUser(userId: String, lastUpdateMax: Date): User
 }
