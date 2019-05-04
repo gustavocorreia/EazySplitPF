@@ -1,10 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.CardActivity">
+    <EditText
+            android:id="@+id/edNcard"
+            android:layout_width="377dp"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:inputType="number"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:hint="Digite o Número do cartão"
+    />
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <EditText
+                android:id="@+id/edCvc"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_width="178dp" android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:hint="cvc"/>
+        <EditText android:layout_width="178dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="50dp"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginRight="15dp"
+                  android:layout_marginBottom="15dp"
+                  android:singleLine="true"
+                  android:hint="validade"
+        />
+    </LinearLayout>
+    <EditText
+            android:id="@+id/edNameCard"
+            android:layout_width="377dp"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:inputType="number"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:hint="Digite o Nome do titular"
+    />
+    <EditText
+            android:id="@+id/edCPF"
+            android:layout_width="377dp"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:inputType="number"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:hint="Digite o CPF do titular"
+    />
+    <Button
+            android:id="@+id/btSaveCard"
+            style="@style/button_login"
+            android:layout_marginTop="200dp"
+            android:text="@string/button_login"
+    />
+
+
+</LinearLayout>

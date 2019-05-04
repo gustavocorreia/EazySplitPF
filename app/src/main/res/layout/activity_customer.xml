@@ -15,7 +15,7 @@
             android:background="#ff0000"
             android:id="@+id/tvHead" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"/>
+            app:layout_constraintHorizontal_bias="1.0" android:layout_marginStart="8dp"/>
     <ImageView
             android:layout_width="171dp"
             android:layout_height="147dp" app:srcCompat="@drawable/com_facebook_profile_picture_blank_portrait"
