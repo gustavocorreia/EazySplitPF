@@ -64,5 +64,11 @@
         <item name="android:layout_marginTop">20dp</item>
         <item name="android:textSize">18sp</item>
     </style>
+    <style name="Default.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Default.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Default.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
 </resources>
