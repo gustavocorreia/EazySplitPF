@@ -55,7 +55,7 @@
                   android:layout_marginBottom="15dp"
                   android:singleLine="true"
                   android:hint="validade"
-        />
+           />
     </LinearLayout>
     <EditText
             android:id="@+id/edNameCard"
