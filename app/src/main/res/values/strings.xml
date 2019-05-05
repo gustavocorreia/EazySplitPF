@@ -31,6 +31,11 @@
     <string name="text_or">OR</string>
     <string name="text_fill_fields">Fill in the remaining fields</string>
     <string name="text_divergent_passwords">Divergent Passwords</string>
+    <string name="text_user_success">User created successfully!</string>
+    <string name="text_user_error">Failed to create user</string>
+    <string name="text_image_error">Failed to load image</string>
+    <string name="text_upload_image_error">Failed to upload image</string>
+    <string name="text_select_profile_picture">Select a profile picture</string>
     <string name="link_register">Create New Customer</string>
     <string name="api_service">https://viacep.com.br/</string>
     <string name="button_register">Cadastrar</string>
