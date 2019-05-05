@@ -33,7 +33,10 @@
     <string name="text_fill_fields">Preencha os campos restantes</string>
     <string name="text_divergent_passwords">Senhas Divergentes</string>
     <string name="text_user_success">Usuário criado com sucesso!</string>
-    <string name="text_user_error">Erro ao criar o usuário</string>
+    <string name="text_user_error">Falha ao criar o usuário</string>
+    <string name="text_image_error">Falha ao carregar a imagem</string>
+    <string name="text_upload_image_error">Falha ao realizar o upload da imagem</string>
+    <string name="text_select_profile_picture">Selecione uma imagem de perfil</string>
     <string name="link_register">Criar Novo Usuário</string>
     <string name="api_service">https://viacep.com.br/</string>
     <string name="button_register">Cadastrar</string>
