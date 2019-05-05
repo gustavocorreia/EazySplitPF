@@ -1,23 +1,26 @@
 package br.com.eazysplit.pf.ui
 
-import android.app.ProgressDialog
+import android.arch.persistence.room.Room
 import android.content.Intent
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.ProgressBar
+import android.util.Log
 import android.widget.Toast
 import br.com.eazysplit.pf.R
+import br.com.eazysplit.pf.data.local.MyDataBase
 import br.com.eazysplit.pf.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_customer.*
 import kotlinx.android.synthetic.main.activity_customer.etPassword
-import kotlinx.android.synthetic.main.activity_login.*
 import java.lang.Exception
 import java.util.*
 
@@ -51,6 +54,19 @@ class CustomerActivity : AppCompatActivity() {
             etName.setText(currentUser.displayName)
             etEmail.setText(currentUser.email)
 
+            mDB.getReference().child(currentUser.uid).addListenerForSingleValueEvent(object:ValueEventListener{
+
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (dataSnapshot.exists()){
+                        val user = dataSnapshot.getValue(User::class.java)
+                        etBirthDate.setText(user!!.birthDate.toString())
+                        etPhone.setText(user!!.phoneNumber)
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {}
+
+            })
         }
     }
 
@@ -60,6 +76,10 @@ class CustomerActivity : AppCompatActivity() {
 
         registerCustomer()
         loadImage()
+    }
+
+    private fun loadExistentImage(){
+
     }
 
     fun registerCustomer(){
@@ -99,6 +119,7 @@ class CustomerActivity : AppCompatActivity() {
 
                     user.url_image = uploadProfileImage(user)
 
+                    persistData(user)
                     Toast.makeText(this, R.string.text_user_success, Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
@@ -174,5 +195,18 @@ class CustomerActivity : AppCompatActivity() {
         }
 
         return true
+    }
+
+    private fun persistData(user: User){
+
+        try {
+            val room = Room
+                .databaseBuilder(applicationContext, MyDataBase::class.java, "EazySplit")
+                .build()
+
+            room.userDao().add(user)
+        }catch (e: Exception){
+            Log.e("persist", e.message)
+        }
     }
 }

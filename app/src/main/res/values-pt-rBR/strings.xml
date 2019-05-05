@@ -25,6 +25,7 @@
     <string name="edittext_address_complement">Complemento</string>
     <string name="edittext_search_restaurant">buscar restaurantes</string>
     <string name="button_search">Pesquisar</string>
+    <string name="button_save">Salvar</string>
     <string name="edittext_insert">Incluir</string>
     <string name="edittext_address_state">UF</string>
     <string name="textview_language">Idioma</string>
@@ -66,4 +67,7 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Compartilhar</string>
     <string name="menu_send">Enviar</string>
+    <string name="edittext_cardname">Digite o Nome do titular</string>
+    <string name="edittext_cpf">Digite o CPF do titular</string>
+    <string name="edittext_cardnumber">Digite o Número do cartão</string>
 </resources>

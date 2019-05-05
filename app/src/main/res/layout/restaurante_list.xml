@@ -14,7 +14,7 @@
                 android:id="@+id/ivJogo"
                 android:layout_width="96dp"
                 android:layout_height="110dp"
-                tools:src="@drawable/godofwar" />
+                tools:src="@drawable/com_facebook_button_icon" />
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

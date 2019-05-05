@@ -7,8 +7,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.CardActivity">
+
     <EditText
-            android:id="@+id/edNcard"
+            android:id="@+id/etCardNumber"
             android:layout_width="377dp"
             android:layout_height="wrap_content"
             android:singleLine="true"
@@ -17,12 +18,11 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="15dp"
-            android:hint="Digite o Número do cartão"
-    />
+            android:hint="@string/edittext_cardnumber"/>
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
         <EditText
-                android:id="@+id/edCvc"
+                android:id="@+id/etCvc"
                 android:layout_marginTop="50dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
@@ -31,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:hint="cvc"/>
+
         <EditText android:layout_width="178dp"
                   android:layout_height="wrap_content"
                   android:layout_marginTop="50dp"
@@ -42,7 +43,7 @@
         />
     </LinearLayout>
     <EditText
-            android:id="@+id/edNameCard"
+            android:id="@+id/etCardName"
             android:layout_width="377dp"
             android:layout_height="wrap_content"
             android:singleLine="true"
@@ -51,10 +52,10 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="15dp"
-            android:hint="Digite o Nome do titular"
+            android:hint="@string/edittext_cardname"
     />
     <EditText
-            android:id="@+id/edCPF"
+            android:id="@+id/etCPF"
             android:layout_width="377dp"
             android:layout_height="wrap_content"
             android:singleLine="true"
@@ -63,14 +64,13 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="15dp"
-            android:hint="Digite o CPF do titular"
+            android:hint="@string/edittext_cpf"
     />
     <Button
             android:id="@+id/btSaveCard"
             style="@style/button_login"
             android:layout_marginTop="200dp"
-            android:text="@string/button_login"
-    />
+            android:text="@string/button_save"/>
 
 
 </LinearLayout>
