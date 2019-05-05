@@ -28,9 +28,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.navMenu)
+       //val navView: BottomNavigationView = findViewById(R.id.navMenu)
 
         //textMessage = findViewById(R.id.message)
-        navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+      //  navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
 }
