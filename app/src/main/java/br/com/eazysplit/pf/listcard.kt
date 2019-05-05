@@ -36,14 +36,14 @@ class listcard : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
-
+/*
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_listcard, container, false)
-    }
+      // return inflater.inflate(R.layout.fragment_listcard, container, false)
+    } */
 
     // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(uri: Uri) {
