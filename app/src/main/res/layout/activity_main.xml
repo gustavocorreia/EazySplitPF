@@ -45,8 +45,6 @@
             android:layout_marginTop="8dp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/navMenu"/>
 
-
-
     <android.support.design.widget.BottomNavigationView
             android:id="@+id/navMenu"
             android:layout_width="0dp"
