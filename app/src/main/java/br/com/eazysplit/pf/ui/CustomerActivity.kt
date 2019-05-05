@@ -11,6 +11,7 @@ import android.widget.Toast
 import br.com.eazysplit.pf.R
 import br.com.eazysplit.pf.data.local.MyDataBase
 import br.com.eazysplit.pf.models.User
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
@@ -21,6 +22,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_customer.*
 import kotlinx.android.synthetic.main.activity_customer.etPassword
+import kotlinx.android.synthetic.main.activity_settings.*
 import java.lang.Exception
 import java.util.*
 
@@ -79,7 +81,16 @@ class CustomerActivity : AppCompatActivity() {
     }
 
     private fun loadExistentImage(){
+        val currentUser = mAuth.currentUser
+        if(currentUser != null){
+            val image_firebase_path = "profile_images/" + currentUser.uid + ".png"
 
+            val mReference = mStorage.reference.child(image_firebase_path)
+
+            Glide.with(this)
+                .load(mReference)
+                .into(ivUser)
+        }
     }
 
     fun registerCustomer(){
@@ -98,6 +109,24 @@ class CustomerActivity : AppCompatActivity() {
                                 Toast.makeText(this@CustomerActivity, it.exception?.message, Toast.LENGTH_SHORT).show()
                             }
                         }
+                } else{
+                    currentUser.updateEmail(user.email)
+                        .addOnCompleteListener {
+                            if(it.isSuccessful){
+
+                                currentUser.updatePassword(user.password)
+                                    .addOnCompleteListener {
+                                        if(it.isSuccessful){
+                                            completeRegister(user)
+                                        } else {
+                                            Toast.makeText(this@CustomerActivity, it.exception?.message, Toast.LENGTH_SHORT).show()
+                                        }
+                                    }
+                            } else {
+                                Toast.makeText(this@CustomerActivity, it.exception?.message, Toast.LENGTH_SHORT).show()
+                            }
+                    }
+                    currentUser
                 }
 
             }
@@ -134,12 +163,18 @@ class CustomerActivity : AppCompatActivity() {
     private fun uploadProfileImage(user: User) : String{
 
         var image_firebase_path = "profile_images/" + user.id + ".png"
-        val imageReference = mStorage.reference.child(image_firebase_path)
-        image_path?.let {
-            imageReference.putFile(it).addOnFailureListener{
-                Toast.makeText(this, R.string.text_upload_image_error, Toast.LENGTH_SHORT).show()
+
+        if(image_path != null){
+            val imageReference = mStorage.reference.child(image_firebase_path)
+            image_path?.let {
+                imageReference.putFile(it).addOnFailureListener{
+                    Toast.makeText(this, R.string.text_upload_image_error, Toast.LENGTH_SHORT).show()
+                }
             }
+        } else {
+            return ""
         }
+
 
         return image_firebase_path
     }
