@@ -11,7 +11,7 @@
             android:orientation="horizontal"
             android:padding="8dp">
         <ImageView
-                android:id="@+id/ivRastau"
+                android:id="@+id/ivRestaurant"
                 android:layout_width="96dp"
                 android:layout_height="110dp"
                 tools:src="" />
