@@ -72,5 +72,7 @@
     <string name="edittext_cardname">Enter the cardholder\'s name</string>
     <string name="edittext_cpf">Enter the cardholder\'s CPF</string>
     <string name="edittext_cardnumber">Enter the Card Number</string>
+    <string name="cvc">cvc</string>
+    <string name="etExpiration">Expiration</string>
 
 </resources>

@@ -2,10 +2,11 @@ package br.com.eazysplit.pf.adapters
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import br.com.eazysplit.pf.R
 import br.com.eazysplit.pf.models.Restaurant
-import kotlinx.android.synthetic.main.restaurante_list.view.*
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.restaurant_row.view.*
 
 class RestaurantListAdapter(
     private val context: Context,
@@ -13,8 +14,10 @@ class RestaurantListAdapter(
     private val listener: (Restaurant) -> Unit
 ) : RecyclerView.Adapter<RestaurantListAdapter.RestaurantViewHolder>(){
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): RestaurantViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): RestaurantViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.restaurant_row, viewGroup, false)
+
+        return RestaurantViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -26,8 +29,14 @@ class RestaurantListAdapter(
     }
 
     class RestaurantViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        fun bindView(restaurant: Restaurant, listener: (Restaurant) -> Unit) = with(itemView){
 
+        fun bindView(restaurant: Restaurant, listener: (Restaurant) -> Unit) = with(itemView){
+            tvName.text = restaurant.name
+            tvDescription.text = restaurant.description
+
+            Glide.with(context)
+                .load(restaurant.url_image)
+                .into(ivRestaurant)
         }
     }
 }

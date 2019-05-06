@@ -70,4 +70,6 @@
     <string name="edittext_cardname">Digite o Nome do titular</string>
     <string name="edittext_cpf">Digite o CPF do titular</string>
     <string name="edittext_cardnumber">Digite o Número do cartão</string>
+    <string name="cvc">cvc</string>
+    <string name="etExpiration">validade</string>
 </resources>

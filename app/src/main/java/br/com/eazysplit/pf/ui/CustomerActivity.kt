@@ -10,6 +10,7 @@ import android.util.Log
 import android.widget.Toast
 import br.com.eazysplit.pf.R
 import br.com.eazysplit.pf.data.local.MyDataBase
+import br.com.eazysplit.pf.models.BirthNumber
 import br.com.eazysplit.pf.models.User
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -56,7 +57,7 @@ class CustomerActivity : AppCompatActivity() {
             etName.setText(currentUser.displayName)
             etEmail.setText(currentUser.email)
 
-            mDB.getReference().child(currentUser.uid).addListenerForSingleValueEvent(object:ValueEventListener{
+            mDB.getReference().child("users").child(currentUser.uid).addListenerForSingleValueEvent(object:ValueEventListener{
 
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     if (dataSnapshot.exists()){
@@ -140,9 +141,9 @@ class CustomerActivity : AppCompatActivity() {
 
         mAuth.currentUser?.updateProfile(profileChangeRequest)
 
-        mDB.getReference("Users")
+        mDB.reference.child("Users")
             .child(user.id)
-            .setValue(user)
+            .setValue(BirthNumber(user.phoneNumber, user.birthDate))
             .addOnCompleteListener {
                 if (it.isSuccessful) {
 
