@@ -21,6 +21,8 @@
             android:layout_width="429dp"
             android:layout_marginTop="4dp"/>
 
+
+
     <android.support.design.widget.BottomNavigationView
             android:id="@+id/navMenu"
             android:layout_width="0dp"
