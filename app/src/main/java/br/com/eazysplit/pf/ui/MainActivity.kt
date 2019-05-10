@@ -68,8 +68,8 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun listShow(restaurantList: List<Restaurant>){
-        rvListRestaurante.adapter = RestaurantListAdapter(this, restaurantList) {
+    private fun listShow(restaurant_row: List<Restaurant>){
+        rvListRestaurante.adapter = RestaurantListAdapter(this, restaurant_row) {
             Toast.makeText(this, it.name, Toast.LENGTH_LONG).show()
         }
     }
