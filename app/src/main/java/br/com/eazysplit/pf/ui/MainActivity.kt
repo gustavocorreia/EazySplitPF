@@ -73,4 +73,6 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, it.name, Toast.LENGTH_LONG).show()
         }
     }
+
 }
+
