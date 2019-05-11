@@ -49,7 +49,8 @@
                 android:singleLine="true"
                 android:hint="@string/cvc"/>
 
-        <EditText android:layout_width="178dp"
+        <EditText android:id="@+id/etExpiration"
+                  android:layout_width="178dp"
                   android:layout_height="wrap_content"
                   android:layout_marginTop="50dp"
                   android:layout_marginLeft="15dp"
