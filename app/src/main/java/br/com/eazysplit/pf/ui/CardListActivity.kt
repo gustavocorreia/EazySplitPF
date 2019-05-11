@@ -3,6 +3,7 @@ package br.com.eazysplit.pf.ui
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import br.com.eazysplit.pf.R
 import br.com.eazysplit.pf.adapters.CardListAdapter
 import br.com.eazysplit.pf.models.Card
@@ -71,6 +72,10 @@ class CardListActivity : AppCompatActivity() {
         rvCardList.adapter = CardListAdapter(this, cardList, {
             goToEdit(it)
         })
+
+        val layoutManager = LinearLayoutManager(this)
+
+        rvCardList.layoutManager = layoutManager
     }
 
     fun goToEdit(card: Card){
