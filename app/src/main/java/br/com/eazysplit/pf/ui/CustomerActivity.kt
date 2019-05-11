@@ -1,25 +1,18 @@
 package br.com.eazysplit.pf.ui
 
-import android.arch.persistence.room.Room
 import android.content.Intent
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.widget.Toast
 import br.com.eazysplit.pf.R
-import br.com.eazysplit.pf.data.local.MyDataBase
 import br.com.eazysplit.pf.models.BirthNumber
 import br.com.eazysplit.pf.models.User
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_customer.*
 import kotlinx.android.synthetic.main.activity_customer.etPassword
@@ -27,13 +20,12 @@ import kotlinx.android.synthetic.main.activity_settings.*
 import java.lang.Exception
 import java.util.*
 
-
-
 class CustomerActivity : AppCompatActivity() {
 
     private lateinit var mAuth : FirebaseAuth
     private lateinit var mDB: FirebaseDatabase
     private lateinit var mStorage: FirebaseStorage
+    private lateinit var mReference: DatabaseReference
     private var image_path: Uri? = null
 
     companion object {
@@ -48,6 +40,11 @@ class CustomerActivity : AppCompatActivity() {
         mDB = FirebaseDatabase.getInstance()
         mStorage = FirebaseStorage.getInstance()
 
+        mDB.setPersistenceEnabled(true)
+
+        mReference = mDB.reference
+        mReference.keepSynced(true)
+
         loadForm()
     }
 
@@ -57,7 +54,9 @@ class CustomerActivity : AppCompatActivity() {
             etName.setText(currentUser.displayName)
             etEmail.setText(currentUser.email)
 
-            mDB.getReference().child("users").child(currentUser.uid).addListenerForSingleValueEvent(object:ValueEventListener{
+            mReference.keepSynced(true)
+
+            mReference.child("users").child(currentUser.uid).addListenerForSingleValueEvent(object:ValueEventListener{
 
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     if (dataSnapshot.exists()){
@@ -86,10 +85,10 @@ class CustomerActivity : AppCompatActivity() {
         if(currentUser != null){
             val image_firebase_path = "profile_images/" + currentUser.uid + ".png"
 
-            val mReference = mStorage.reference.child(image_firebase_path)
+            val mSReference = mStorage.reference.child(image_firebase_path)
 
             Glide.with(this)
-                .load(mReference)
+                .load(mSReference)
                 .into(ivUser)
         }
     }
@@ -127,7 +126,6 @@ class CustomerActivity : AppCompatActivity() {
                                 Toast.makeText(this@CustomerActivity, it.exception?.message, Toast.LENGTH_SHORT).show()
                             }
                     }
-                    currentUser
                 }
 
             }
@@ -141,7 +139,7 @@ class CustomerActivity : AppCompatActivity() {
 
         mAuth.currentUser?.updateProfile(profileChangeRequest)
 
-        mDB.reference.child("Users")
+        mReference.child("Users")
             .child(user.id)
             .setValue(BirthNumber(user.phoneNumber, user.birthDate))
             .addOnCompleteListener {
@@ -149,7 +147,6 @@ class CustomerActivity : AppCompatActivity() {
 
                     user.url_image = uploadProfileImage(user)
 
-                    persistData(user)
                     Toast.makeText(this, R.string.text_user_success, Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
@@ -231,18 +228,5 @@ class CustomerActivity : AppCompatActivity() {
         }
 
         return true
-    }
-
-    private fun persistData(user: User){
-
-        try {
-            val room = Room
-                .databaseBuilder(applicationContext, MyDataBase::class.java, "EazySplit")
-                .build()
-
-            room.userDao().add(user)
-        }catch (e: Exception){
-            Log.e("persist", e.message)
-        }
     }
 }
