@@ -25,7 +25,7 @@ class CardActivity : AppCompatActivity() {
         mReference = mDB.reference
         mReference.keepSynced(true)
 
-        
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
