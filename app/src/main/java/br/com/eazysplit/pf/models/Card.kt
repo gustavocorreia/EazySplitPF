@@ -6,10 +6,11 @@ data class Card (
     @Exclude
     var id:String,
 
-    var code_validate: String,
+    var codeValidate: String,
+    var document: String,
     var flag: String,
-    var month_validate: Int,
-    var card_name: String,
+    var monthValidate: Int,
+    var name: String,
     var number: String,
-    var year_validate: Int
+    var yearValidate: Int
 )

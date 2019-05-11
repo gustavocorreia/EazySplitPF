@@ -74,6 +74,9 @@ class CardListActivity : AppCompatActivity() {
     }
 
     fun goToEdit(card: Card){
-        
+        var cardIntent = Intent(this@CardListActivity, CardActivity::class.java)
+        cardIntent.putExtra("CARD_ID", card.id)
+        startActivity(cardIntent)
+        finish()
     }
 }

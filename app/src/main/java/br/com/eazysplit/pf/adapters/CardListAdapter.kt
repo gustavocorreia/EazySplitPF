@@ -31,10 +31,10 @@ class CardListAdapter(
 
     class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         fun bindView(card: Card, listener: (Card) -> Unit) = with(itemView){
-            tvCVC.text = card.code_validate
-            tvName.text = card.card_name
+            tvCVC.text = card.codeValidate
+            tvName.text = card.name
             tvNumber.text = card.number
-            tvExpiration.text = card.month_validate.toString() + "/" + card.year_validate.toString()
+            tvExpiration.text = card.monthValidate.toString().padStart(2, '0') + "/" + card.yearValidate.toString()
 
             setOnClickListener{
                 listener(card)

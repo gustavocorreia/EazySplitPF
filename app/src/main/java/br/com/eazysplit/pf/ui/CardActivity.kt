@@ -8,8 +8,7 @@ import br.com.eazysplit.pf.R
 import br.com.eazysplit.pf.models.Card
 import br.com.eazysplit.pf.util.Mask
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_card.*
 import java.util.*
@@ -45,6 +44,39 @@ class CardActivity : AppCompatActivity() {
 
         registerCard()
         inputMaskExpiration()
+
+        if(intent.extras != null){
+            loadForm()
+        }
+    }
+
+    fun loadForm(){
+        cardID = intent.extras.getString("CARD_ID")
+        val id = mAuth.currentUser!!.uid
+
+        val cardUnitReference =  mReference.child("users")
+            .child(id).child("card").child(cardID!!)
+
+        cardUnitReference.addListenerForSingleValueEvent(object:ValueEventListener{
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()){
+                    val card = dataSnapshot.getValue(Card::class.java)
+                    card?.let {
+                        etCardNumber.setText(it.number)
+                        etCardName.setText(it.name)
+                        etCvc.setText(it.codeValidate)
+                        etCPF.setText(it.document)
+                        val expiration = it.monthValidate
+                                                .toString().padStart(2, '0') + "/" + it.yearValidate
+                        etExpiration.setText(expiration)
+                    }
+                }
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+        })
     }
 
     fun registerCard(){
@@ -75,7 +107,7 @@ class CardActivity : AppCompatActivity() {
     private fun mountCard() : Card {
         val expiration = etExpiration.text.toString().split("/")
 
-        return Card("", etCvc.text.toString(), "", expiration[0].toInt(), etCardName.text.toString(), etCardNumber.text.toString(), expiration[1].toInt())
+        return Card("", etCvc.text.toString(), etCPF.text.toString(),"MasterCard", expiration[0].toInt(), etCardName.text.toString(), etCardNumber.text.toString(), expiration[1].toInt())
     }
 
     private fun validateFields() : Boolean {
