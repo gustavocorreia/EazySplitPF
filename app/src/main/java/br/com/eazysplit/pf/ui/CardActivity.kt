@@ -60,14 +60,22 @@ class CardActivity : AppCompatActivity() {
                 if(cardID == null)
                     cardID = UUID.randomUUID().toString()
 
-                cardReference.child(cardID!!).setValue(card)
+                cardReference.child(cardID!!).setValue(card).addOnCompleteListener {
+                    if(it.isSuccessful){
+                        Toast.makeText(this, getString(R.string.successfull_add_card), Toast.LENGTH_SHORT).show()
+                    }else {
+                        Toast.makeText(this@CardActivity, it.exception?.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
 
         }
     }
 
     private fun mountCard() : Card {
-        return Card(etCvc.text.toString(), "", 0, etCardName.text.toString(), etCardNumber.text.toString(), 0)
+        val expiration = etExpiration.text.toString().split("/")
+
+        return Card("", etCvc.text.toString(), "", expiration[0].toInt(), etCardName.text.toString(), etCardNumber.text.toString(), expiration[1].toInt())
     }
 
     private fun validateFields() : Boolean {

@@ -74,5 +74,6 @@
     <string name="edittext_cardnumber">Enter the Card Number</string>
     <string name="cvc">cvc</string>
     <string name="etExpiration">Expiration</string>
+    <string name="successfull_add_card">Card added or changed successfully</string>
 
 </resources>

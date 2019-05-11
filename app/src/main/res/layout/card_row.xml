@@ -12,33 +12,34 @@
                 android:orientation="vertical">
 
             <TextView
-                    android:id="@+id/tbnumero"
+                    android:id="@+id/tvName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     tools:text="nome do titular do cartão " />
             <TextView
-                    android:id="@+id/cvc"
+                    android:id="@+id/tvNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     tools:text="numero do titular do cartão " />
-                  <TextView
-                          android:id="@+id/tvV"
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:textSize="20sp"
-                          android:textStyle="bold"
-                          tools:text="cvf " />
-                  <TextView
-                          android:id="@+id/tvValidade"
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:textSize="20sp"
-                          android:textStyle="bold"
-                          tools:text="validade " />
+            <TextView
+                  android:id="@+id/tvCVC"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textSize="20sp"
+                  android:textStyle="bold"
+                  tools:text="cvc " />
+
+            <TextView
+                  android:id="@+id/tvExpiration"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textSize="20sp"
+                  android:textStyle="bold"
+                  tools:text="validade " />
         </LinearLayout>
 
 </android.support.v7.widget.CardView>
