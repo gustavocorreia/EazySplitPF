@@ -7,15 +7,12 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Toast
 import br.com.eazysplit.pf.R
-import br.com.eazysplit.pf.models.BirthNumber
-import br.com.eazysplit.pf.models.User
+import br.com.eazysplit.pf.models.*
 import com.bumptech.glide.Glide
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
-import com.google.firebase.database.*
+import com.google.firebase.auth.*
+import com.google.firebase.firestore.*
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_customer.*
-import kotlinx.android.synthetic.main.activity_customer.etPassword
 import kotlinx.android.synthetic.main.activity_settings.*
 import java.lang.Exception
 import java.util.*
@@ -23,9 +20,8 @@ import java.util.*
 class CustomerActivity : AppCompatActivity() {
 
     private lateinit var mAuth : FirebaseAuth
-    private lateinit var mDB: FirebaseDatabase
+    private lateinit var mDB: FirebaseFirestore
     private lateinit var mStorage: FirebaseStorage
-    private lateinit var mReference: DatabaseReference
     private var image_path: Uri? = null
 
     companion object {
@@ -37,13 +33,13 @@ class CustomerActivity : AppCompatActivity() {
         super.onStart()
 
         mAuth = FirebaseAuth.getInstance()
-        mDB = FirebaseDatabase.getInstance()
+        mDB = FirebaseFirestore.getInstance()
+
+        mDB.firestoreSettings = FirebaseFirestoreSettings.Builder()
+                                                         .setPersistenceEnabled(true).build()
         mStorage = FirebaseStorage.getInstance()
 
-        mDB.setPersistenceEnabled(true)
 
-        mReference = mDB.reference
-        mReference.keepSynced(true)
 
         loadForm()
     }
@@ -54,21 +50,16 @@ class CustomerActivity : AppCompatActivity() {
             etName.setText(currentUser.displayName)
             etEmail.setText(currentUser.email)
 
-            mReference.keepSynced(true)
+            val userDocument = mDB.collection("users")
+                                                    .document(currentUser.uid)
 
-            mReference.child("users").child(currentUser.uid).addListenerForSingleValueEvent(object:ValueEventListener{
-
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    if (dataSnapshot.exists()){
-                        val user = dataSnapshot.getValue(User::class.java)
-                        etBirthDate.setText(user!!.birthDate.toString())
-                        etPhone.setText(user!!.phoneNumber)
-                    }
+            userDocument.get().addOnCompleteListener {
+                if(it.isSuccessful){
+                    val user = it.result?.toObject(User::class.java)
+                    etBirthDate.setText(user!!.birthDate.toString())
+                    etPhone.setText(user!!.phoneNumber)
                 }
-
-                override fun onCancelled(databaseError: DatabaseError) {}
-
-            })
+            }
         }
     }
 
@@ -139,9 +130,10 @@ class CustomerActivity : AppCompatActivity() {
 
         mAuth.currentUser?.updateProfile(profileChangeRequest)
 
-        mReference.child("Users")
-            .child(user.id)
-            .setValue(BirthNumber(user.phoneNumber, user.birthDate))
+        val userDocument = mDB.collection("users")
+            .document(user.id)
+
+        userDocument.set(BirthNumber(user.phoneNumber, user.birthDate))
             .addOnCompleteListener {
                 if (it.isSuccessful) {
 
@@ -154,6 +146,7 @@ class CustomerActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(this, R.string.text_user_error, Toast.LENGTH_SHORT).show()
                 }
+
             }
 
     }

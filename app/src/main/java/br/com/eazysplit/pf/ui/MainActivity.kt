@@ -3,12 +3,15 @@ package br.com.eazysplit.pf.ui
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import br.com.eazysplit.pf.R
 import br.com.eazysplit.pf.adapters.RestaurantListAdapter
 import br.com.eazysplit.pf.models.Restaurant
 import com.google.firebase.database.*
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_card.*
 import kotlinx.android.synthetic.main.activity_card.navMenu
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var textMessage: TextView
-    private lateinit var db: FirebaseDatabase
+    private lateinit var db: FirebaseFirestore
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -35,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        db = FirebaseDatabase.getInstance()
+        db = FirebaseFirestore.getInstance()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,24 +51,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadData(){
-        val restaurantReference = db.reference.child("restaurants")
+        val restaurantCollection = db.collection("restaurants")
 
-        restaurantReference.addListenerForSingleValueEvent(object:ValueEventListener{
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot.exists()){
-                    val restaurantList = ArrayList<Restaurant>()
+        restaurantCollection.addSnapshotListener { documentSnapshots, e ->
+            if (e != null) {
+                Log.e("MainActivity", "Listen failed!", e)
+                return@addSnapshotListener
+            }
 
-                    for (singleSnapshot in dataSnapshot.children){
-                        val restaurant = singleSnapshot.getValue(Restaurant::class.java)
-                        restaurant?.let { restaurantList.add(it) }
-                    }
+            val restaurantList = ArrayList<Restaurant>()
 
-                    listShow(restaurantList)
+            if (documentSnapshots != null) {
+                for (doc in documentSnapshots) {
+                    val note = doc.toObject(Restaurant::class.java)
+                    restaurantList.add(note)
                 }
             }
 
-            override fun onCancelled(databaseError: DatabaseError) {}
-        })
+            listShow(restaurantList)
+
+        }
+
     }
 
     private fun listShow(restaurant_row: List<Restaurant>){
