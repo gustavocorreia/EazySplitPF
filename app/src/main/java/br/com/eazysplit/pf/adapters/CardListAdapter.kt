@@ -29,7 +29,7 @@ class CardListAdapter(
         cardViewHolder.bindView(cards[i], listener)
     }
 
-    class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         fun bindView(card: Card, listener: (Card) -> Unit) = with(itemView){
             tvCVC.text = card.codeValidate
             tvName.text = card.name
@@ -39,6 +39,7 @@ class CardListAdapter(
             setOnClickListener{
                 listener(card)
             }
+
         }
     }
 

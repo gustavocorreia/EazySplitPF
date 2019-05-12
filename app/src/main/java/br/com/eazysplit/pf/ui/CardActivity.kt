@@ -8,16 +8,15 @@ import br.com.eazysplit.pf.R
 import br.com.eazysplit.pf.models.Card
 import br.com.eazysplit.pf.util.Mask
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
-import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreSettings
 import kotlinx.android.synthetic.main.activity_card.*
 import java.util.*
 
 class CardActivity : AppCompatActivity() {
 
     private lateinit var mAuth : FirebaseAuth
-    private lateinit var mDB: FirebaseDatabase
-    private lateinit var mReference: DatabaseReference
+    private lateinit var mDB: FirebaseFirestore
 
     private var cardID: String? = null
 
@@ -25,11 +24,9 @@ class CardActivity : AppCompatActivity() {
         super.onStart()
 
         mAuth = FirebaseAuth.getInstance()
-        mDB = FirebaseDatabase.getInstance()
-        mDB.setPersistenceEnabled(true)
+        mDB = FirebaseFirestore.getInstance()
 
-        mReference = mDB.reference
-        mReference.keepSynced(true)
+        mDB.firestoreSettings = FirebaseFirestoreSettings.Builder().setPersistenceEnabled(true).build()
 
         if(mAuth.currentUser == null){
             val loginIntent = Intent(this@CardActivity, LoginActivity::class.java)
@@ -54,29 +51,22 @@ class CardActivity : AppCompatActivity() {
         cardID = intent.extras.getString("CARD_ID")
         val id = mAuth.currentUser!!.uid
 
-        val cardUnitReference =  mReference.child("users")
-            .child(id).child("card").child(cardID!!)
+        val cardDocument = mDB.collection("users").document(id)
+                                                .collection("cards").document(cardID!!)
 
-        cardUnitReference.addListenerForSingleValueEvent(object:ValueEventListener{
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot.exists()){
-                    val card = dataSnapshot.getValue(Card::class.java)
-                    card?.let {
-                        etCardNumber.setText(it.number)
-                        etCardName.setText(it.name)
-                        etCvc.setText(it.codeValidate)
-                        etCPF.setText(it.document)
-                        val expiration = it.monthValidate
-                                                .toString().padStart(2, '0') + "/" + it.yearValidate
-                        etExpiration.setText(expiration)
-                    }
-                }
+        cardDocument.get().addOnCompleteListener {
+            if(it.isSuccessful){
+                val card = it.result?.toObject(Card::class.java)
+                etCardNumber.setText(card!!.number)
+                etCardName.setText(card!!.name)
+                etCvc.setText(card!!.codeValidate)
+                etCPF.setText(card!!.document)
+                val expiration = card!!.monthValidate
+                    .toString().padStart(2, '0') + "/" + card.yearValidate
+                etExpiration.setText(expiration)
             }
+        }
 
-            override fun onCancelled(p0: DatabaseError) {
-
-            }
-        })
     }
 
     fun registerCard(){
@@ -86,13 +76,13 @@ class CardActivity : AppCompatActivity() {
 
                 val card = mountCard()
 
-                val cardReference =  mReference.child("users")
-                    .child(id).child("card")
+                val cardCollection = mDB.collection("users").document(id)
+                                .collection("cards")
 
                 if(cardID == null)
                     cardID = UUID.randomUUID().toString()
 
-                cardReference.child(cardID!!).setValue(card).addOnCompleteListener {
+                cardCollection.document(cardID!!).set(card).addOnCompleteListener {
                     if(it.isSuccessful){
                         Toast.makeText(this, getString(R.string.successfull_add_card), Toast.LENGTH_SHORT).show()
                     }else {
