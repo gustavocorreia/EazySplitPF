@@ -68,7 +68,7 @@ class CardListActivity : AppCompatActivity() {
         })
     }
 
-    fun listShow(cardList: List<Card>){
+    fun listShow(cardList: MutableList<Card>){
         rvCardList.adapter = CardListAdapter(this, cardList, {
             goToEdit(it)
         })
@@ -79,7 +79,7 @@ class CardListActivity : AppCompatActivity() {
     }
 
     fun goToEdit(card: Card){
-        var cardIntent = Intent(this@CardListActivity, CardActivity::class.java)
+        val cardIntent = Intent(this@CardListActivity, CardActivity::class.java)
         cardIntent.putExtra("CARD_ID", card.id)
         startActivity(cardIntent)
         finish()

@@ -73,4 +73,5 @@
     <string name="cvc">cvc</string>
     <string name="etExpiration">validade</string>
     <string name="successfull_add_card">Cartão adicionado ou alterado com sucesso</string>
+    <string name="image_view_delete_card">Excluir Cartão</string>
 </resources>

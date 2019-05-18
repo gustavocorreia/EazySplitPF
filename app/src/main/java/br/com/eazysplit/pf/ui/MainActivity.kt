@@ -13,6 +13,7 @@ import br.com.eazysplit.pf.SettingsFragment
 import br.com.eazysplit.pf.adapters.RestaurantListAdapter
 import br.com.eazysplit.pf.models.Restaurant
 import com.google.firebase.database.*
+import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_card.*
 import kotlinx.android.synthetic.main.activity_card.navMenu
@@ -23,6 +24,7 @@ import kotlinx.android.synthetic.main.activity_main.rvListRestaurante as rvListR
 
 
 class MainActivity : AppCompatActivity() {
+
 
     // private lateinit var textMessage: TextView
     private lateinit var db: FirebaseFirestore
@@ -64,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun loadData() {
+     private fun loadData(){
         val restaurantCollection = db.collection("restaurants")
 
         restaurantCollection.addSnapshotListener { documentSnapshots, e ->
@@ -82,10 +84,16 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            //textMessage = findViewById(R.id.message)
-            //  navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+            listShow(restaurantList)
+
+        }
+
+    }
+
+    private fun listShow(restaurant_row: List<Restaurant>){
+        rvListRestaurante.adapter = RestaurantListAdapter(this, restaurant_row) {
+            Toast.makeText(this, it.name, Toast.LENGTH_LONG).show()
         }
     }
+
 }
-
-
