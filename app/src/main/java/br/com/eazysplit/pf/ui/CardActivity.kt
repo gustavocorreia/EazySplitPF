@@ -85,6 +85,10 @@ class CardActivity : AppCompatActivity() {
                 cardCollection.document(cardID!!).set(card).addOnCompleteListener {
                     if(it.isSuccessful){
                         Toast.makeText(this, getString(R.string.successfull_add_card), Toast.LENGTH_SHORT).show()
+
+                        val cardListIntent = Intent(this@CardActivity, CardListActivity::class.java)
+                        startActivity(cardListIntent)
+                        finish()
                     }else {
                         Toast.makeText(this@CardActivity, it.exception?.message, Toast.LENGTH_SHORT).show()
                     }

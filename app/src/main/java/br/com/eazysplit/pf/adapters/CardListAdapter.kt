@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.card_row.view.*
 
 class CardListAdapter(
     private val context: Context,
-    private val cards: List<Card>,
+    private val cards: MutableList<Card>,
     private val listener: (Card) -> Unit
 ) : RecyclerView.Adapter<CardListAdapter.CardViewHolder>(){
 
@@ -38,9 +38,18 @@ class CardListAdapter(
 
             setOnClickListener{
                 listener(card)
+                notifyItemChanged(this@CardViewHolder.position);
+                notifyDataSetChanged();
+            }
+
+            btDelete.setOnClickListener {
+                cards.remove(card)
+
             }
 
         }
+
+
     }
 
     interface ClickListener {
