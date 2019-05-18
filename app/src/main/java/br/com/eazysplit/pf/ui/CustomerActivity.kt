@@ -28,7 +28,6 @@ class CustomerActivity : AppCompatActivity() {
         val IMAGE_REQUEST_CODE = 71
     }
 
-
     override fun onStart() {
         super.onStart()
 
