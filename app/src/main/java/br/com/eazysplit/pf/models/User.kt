@@ -1,6 +1,6 @@
 package br.com.eazysplit.pf.models
 
-import com.google.firebase.database.Exclude
+import com.google.firebase.firestore.Exclude
 import java.util.*
 
 data class User (
