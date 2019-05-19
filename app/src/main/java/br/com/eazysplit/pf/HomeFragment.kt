@@ -54,6 +54,8 @@ class HomeFragment : Fragment() {
                 }
             }
 
+            // comentário teste
+
             recyclerView.layoutManager = LinearLayoutManager(activity)
 
             recyclerView.adapter = RestaurantListAdapter(activity!!, restaurantList) {
