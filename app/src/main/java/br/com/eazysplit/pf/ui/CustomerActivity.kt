@@ -18,14 +18,19 @@ import java.util.*
 import br.com.eazysplit.pf.R
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
+import com.google.firebase.Timestamp
 import java.io.ByteArrayOutputStream
+import java.text.SimpleDateFormat
 
 class CustomerActivity : AppCompatActivity() {
 
     private lateinit var mAuth : FirebaseAuth
     private lateinit var mDB: FirebaseFirestore
     private lateinit var mStorage: FirebaseStorage
+
+    private var update = false
 
     companion object {
         val CAMERA_REQUEST_CODE = 71
@@ -49,9 +54,14 @@ class CustomerActivity : AppCompatActivity() {
         mDB.firestoreSettings = FirebaseFirestoreSettings.Builder()
                                                          .setPersistenceEnabled(true).build()
         mStorage = FirebaseStorage.getInstance()
+
+        if (mAuth.currentUser != null) {
+            update = true
+            getUser()
+        }
     }
 
-    fun registerCustomer(){
+    private fun registerCustomer(){
         btRegister.setOnClickListener {
             if(validateFields()){
                 val user = mountUser()
@@ -67,7 +77,7 @@ class CustomerActivity : AppCompatActivity() {
                             }
                         }
                 } else{
-
+                    completeRegister(user)
                 }
 
             }
@@ -128,7 +138,10 @@ class CustomerActivity : AppCompatActivity() {
             storageRef.delete().addOnCompleteListener {
                 storageRef.putBytes(imageByteArray)
                     .addOnCompleteListener {
-                        performUserChange(user)
+                        storageRef.downloadUrl.addOnCompleteListener {
+                            user.url_image = it.toString()
+                            performUserChange(user)
+                        }
                     }
             }
         } else {
@@ -137,7 +150,7 @@ class CustomerActivity : AppCompatActivity() {
 
     }
 
-    fun performUserChange(user: User) {
+    private fun performUserChange(user: User) {
         val currentUser = mAuth.currentUser
 
         val profileUpdates = UserProfileChangeRequest.Builder()
@@ -153,7 +166,7 @@ class CustomerActivity : AppCompatActivity() {
             }
     }
 
-    fun performUserChangeOthersData(user: User) {
+    private fun performUserChangeOthersData(user: User) {
         val docData = HashMap<String, Any>()
         docData.put("birthDate", user.birthDate)
         docData.put("phoneNumber", user.phoneNumber)
@@ -174,15 +187,15 @@ class CustomerActivity : AppCompatActivity() {
     private fun validateFields() : Boolean{
         if (etName.text.toString() == ""
             || etEmail.text.toString() == ""
-            || etPassword.text.toString() == ""
             || etPhone.text.toString() == ""
             || etBirthDate.text.toString() == ""
-            || etPasswordConfirm.text.toString() == "") {
+            || (etPassword.text.toString() == "" && !update)
+            || (etPasswordConfirm.text.toString() == "" && !update)) {
             Toast.makeText(this, R.string.text_fill_fields, Toast.LENGTH_LONG).show()
             return false
         }
 
-        if(etPassword.text.toString() != etPasswordConfirm.text.toString()){
+        if(etPassword.text.toString() != etPasswordConfirm.text.toString() && !update){
             Toast.makeText(this, R.string.text_divergent_passwords, Toast.LENGTH_LONG).show()
             return false
         }
@@ -197,5 +210,32 @@ class CustomerActivity : AppCompatActivity() {
 
         return stream.toByteArray()
     }
+
+    private fun getUser() {
+        val uid = mAuth.currentUser?.uid ?: ""
+
+        etName.setText(mAuth.currentUser?.displayName)
+        etEmail.setText(mAuth.currentUser?.email)
+        ivCustomer.setImageURI(mAuth.currentUser?.photoUrl)
+        etPassword.visibility = View.INVISIBLE
+        etPasswordConfirm.visibility = View.INVISIBLE
+
+        mDB.collection(COLLECTION_USERS).document(uid).get().addOnCompleteListener {
+            if (it.isSuccessful) {
+                val document = it.getResult()
+                val data = document?.getData()
+                val phone = data?.get("phoneNumber") as? String
+                val birthDate = data?.get("birthDate") as? Timestamp
+
+                val sdf = SimpleDateFormat("dd/MM/yyyy")
+
+                etPhone.setText(phone)
+                etBirthDate.setText(sdf.format(birthDate?.toDate()))
+            }
+        }
+
+        btRegister.setText("Alterar")
+    }
+
 
 }

@@ -30,8 +30,9 @@ class SettingsFragment: Fragment() {
         val btExit = view.findViewById(R.id.btExit) as Button
 
         btEditCustomer.setOnClickListener {
-            val user = mAuth.currentUser
             val customerIntent = Intent(activity!!, CustomerActivity::class.java)
+            startActivity(customerIntent)
+            activity!!.finish()
         }
 
         btLanguage.setOnClickListener {
