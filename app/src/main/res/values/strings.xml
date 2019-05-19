@@ -78,5 +78,9 @@
     <string name="image_view_delete_card">Delete Card</string>
     <string name="delete_card_sucessfull">Card deleted successfully!</string>
     <string name="google_maps_key">AIzaSyB8LRvuTpJn62nTG-zZijkiL6YNyU526PU</string>
+    <string name="button_edit_customer">Edit</string>
+    <string name="button_language">Language</string>
+    <string name="button_payment_methods">Payment Method</string>
+    <string name="button_exit">Exit</string>
 
 </resources>

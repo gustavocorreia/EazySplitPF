@@ -76,4 +76,8 @@
     <string name="image_view_delete_card">Excluir Cartão</string>
     <string name="delete_card_sucessfull">Cartão excluido com sucesso!</string>
     <string name="google_maps_key">AIzaSyB8LRvuTpJn62nTG-zZijkiL6YNyU526PU</string>
+    <string name="button_edit_customer">Editar</string>
+    <string name="button_language">Idioma</string>
+    <string name="button_payment_methods">Forma de Pagamentos</string>
+    <string name="button_exit">Sair</string>
 </resources>

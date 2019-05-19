@@ -32,13 +32,15 @@ class CardListActivity : AppCompatActivity() {
             startActivity(loginIntent)
             finish()
         }
+
+        loadData()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card_list)
 
-        loadData()
+
         addCard()
     }
 

@@ -10,7 +10,10 @@ import android.view.ViewGroup
 import android.support.v7.app.AppCompatActivity
 import android.content.Intent
 import android.widget.Button
+import br.com.eazysplit.pf.ui.CardListActivity
 import br.com.eazysplit.pf.ui.CustomerActivity
+import br.com.eazysplit.pf.ui.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
 
 
 class SettingsFragment : Fragment() {
@@ -20,7 +23,39 @@ class SettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false)
+        val view = inflater.inflate(R.layout.fragment_settings, container, false)
+
+        val btEditCustomer = view.findViewById(R.id.btEditCustomer) as Button
+        val btLanguage = view.findViewById(R.id.btLanguage) as Button
+        val btPaymentMethod = view.findViewById(R.id.btPaymentMethod) as Button
+        val btExit = view.findViewById(R.id.btExit) as Button
+
+        val mAuth = FirebaseAuth.getInstance()
+
+
+        btEditCustomer.setOnClickListener {
+            val user = mAuth.currentUser
+            val customerIntent = Intent(activity!!, CustomerActivity::class.java)
+        }
+
+        btLanguage.setOnClickListener {
+
+        }
+
+        btPaymentMethod.setOnClickListener {
+            val cardListIntent = Intent(activity!!, CardListActivity::class.java)
+            startActivity(cardListIntent)
+            activity!!.finish()
+        }
+
+        btExit.setOnClickListener {
+            mAuth.signOut()
+            val loginIntent = Intent(activity!!, LoginActivity::class.java)
+            startActivity(loginIntent)
+            activity!!.finish()
+        }
+
+        return view
     }
 
 
