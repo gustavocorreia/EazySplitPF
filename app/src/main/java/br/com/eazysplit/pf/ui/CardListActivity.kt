@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.widget.Toast
 import br.com.eazysplit.pf.R
 import br.com.eazysplit.pf.adapters.CardListAdapter
 import br.com.eazysplit.pf.models.Card
@@ -65,6 +66,7 @@ class CardListActivity : AppCompatActivity() {
             if (querySnapshot != null) {
                 for (doc in querySnapshot) {
                     val card = doc.toObject(Card::class.java)
+                    card.id = doc.id
                     cardList.add(card)
                 }
             }
@@ -87,6 +89,19 @@ class CardListActivity : AppCompatActivity() {
     }
 
     fun deleteCard(card: Card){
+        val currentUser = mAuth.currentUser!!
+
+        val cardDocument = mDB.collection("users").document(currentUser.uid)
+            .collection("cards").document(card.id)
+
+
+        cardDocument.delete().addOnCompleteListener {
+            if(it.isSuccessful){
+                Toast.makeText(this, getString(R.string.delete_card_sucessfull), Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this@CardListActivity, it.exception?.message, Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     fun goToEdit(card: Card){

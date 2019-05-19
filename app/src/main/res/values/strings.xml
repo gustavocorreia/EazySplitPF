@@ -76,5 +76,6 @@
     <string name="etExpiration">Expiration</string>
     <string name="successfull_add_card">Card added or changed successfully</string>
     <string name="image_view_delete_card">Delete Card</string>
+    <string name="delete_card_sucessfull">Card deleted successfully!</string>
 
 </resources>
