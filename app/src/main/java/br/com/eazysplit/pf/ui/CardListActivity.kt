@@ -79,15 +79,18 @@ class CardListActivity : AppCompatActivity() {
     }
 
     fun listShow(cardList: MutableList<Card>){
-        rvCardList.adapter = CardListAdapter(this, cardList, {
-            goToEdit(it)
-        }, {
-            deleteCard(it)
-        })
 
-        val layoutManager = LinearLayoutManager(this)
+        if(cardList.size > 0){
+            rvCardList.adapter = CardListAdapter(this, cardList, {
+                goToEdit(it)
+            }, {
+                deleteCard(it)
+            })
 
-        rvCardList.layoutManager = layoutManager
+            val layoutManager = LinearLayoutManager(this)
+
+            rvCardList.layoutManager = layoutManager
+        }
     }
 
     fun deleteCard(card: Card){
