@@ -27,6 +27,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    android:layout_marginLeft="8dp"
                     tools:text="Bares e Restaurantes" />
             <TextView
                     android:id="@+id/tvDescription"
@@ -36,6 +37,7 @@
                     android:ellipsize="end"
                     android:maxLines="3"
                     android:textSize="14sp"
+                    android:layout_marginLeft="8dp"
                     tools:text="Temos as melhores parcerias com os melhores bares e restaurante da cidade,
                      onde você e seus amigos irão se divetir e curti  bons momentos" />
         </LinearLayout>
