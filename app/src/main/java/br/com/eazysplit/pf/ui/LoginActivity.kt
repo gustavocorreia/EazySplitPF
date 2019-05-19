@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
 
     private val TAG = "LoginActivity"
 
-    private lateinit var mAuth : FirebaseAuth
+    private lateinit var mAuth: FirebaseAuth
     private lateinit var callbackManager: CallbackManager
 
     override fun onStart() {
