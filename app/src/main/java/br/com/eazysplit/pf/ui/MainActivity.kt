@@ -48,10 +48,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        db = FirebaseFirestore.getInstance()
 
         navMenu.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        db = FirebaseFirestore.getInstance()
         // loadData()
     }
 
