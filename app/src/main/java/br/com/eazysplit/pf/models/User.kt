@@ -21,7 +21,7 @@ data class User (
     var password: String,
 
     @Exclude
-    var url_image: String?,
+    var url_image: String,
 
     @Exclude
     var CardList: List<Card>?,
