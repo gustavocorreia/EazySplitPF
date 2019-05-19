@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.support.v7.app.AppCompatActivity
 import android.content.Intent
+import android.widget.Button
 import br.com.eazysplit.pf.ui.CustomerActivity
 
 
@@ -21,6 +22,7 @@ class SettingsFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
+
 
 
 }
