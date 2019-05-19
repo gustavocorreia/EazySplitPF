@@ -41,5 +41,7 @@ asdsadsaaaada dsadasdsa asdasdasda asdsa"
 
     <com.google.android.gms.maps.MapView
             android:layout_width="match_parent"
-            android:layout_height="356dp" android:id="@+id/mapView"/>
+            android:layout_height="356dp"
+            android:apiKey="@string/google_api_key"
+            android:id="@+id/mapView"/>
 </LinearLayout>

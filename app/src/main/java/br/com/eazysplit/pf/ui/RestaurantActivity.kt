@@ -32,14 +32,15 @@ class RestaurantActivity : AppCompatActivity() {
             val loginIntent = Intent(this@RestaurantActivity, LoginActivity::class.java)
             startActivity(loginIntent)
             finish()
+        } else {
+            loadRestaurant()
         }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant)
-
-        loadRestaurant()
     }
 
     private fun loadRestaurant(){

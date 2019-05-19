@@ -14,23 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
-    private lateinit var mAuth : FirebaseAuth
-    private lateinit var mDB: FirebaseFirestore
 
-    override fun onStart() {
-        super.onStart()
-
-        mAuth = FirebaseAuth.getInstance()
-        mDB = FirebaseFirestore.getInstance()
-
-        mDB.firestoreSettings = FirebaseFirestoreSettings.Builder().setPersistenceEnabled(true).build()
-
-        if(mAuth.currentUser == null){
-            val loginIntent = Intent(this@MapsActivity, LoginActivity::class.java)
-            startActivity(loginIntent)
-            finish()
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

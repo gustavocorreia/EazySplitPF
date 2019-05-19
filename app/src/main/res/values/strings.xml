@@ -77,5 +77,6 @@
     <string name="successfull_add_card">Card added or changed successfully</string>
     <string name="image_view_delete_card">Delete Card</string>
     <string name="delete_card_sucessfull">Card deleted successfully!</string>
+    <string name="google_maps_key">AIzaSyB8LRvuTpJn62nTG-zZijkiL6YNyU526PU</string>
 
 </resources>

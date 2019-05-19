@@ -75,4 +75,5 @@
     <string name="successfull_add_card">Cartão adicionado ou alterado com sucesso</string>
     <string name="image_view_delete_card">Excluir Cartão</string>
     <string name="delete_card_sucessfull">Cartão excluido com sucesso!</string>
+    <string name="google_maps_key">AIzaSyB8LRvuTpJn62nTG-zZijkiL6YNyU526PU</string>
 </resources>
