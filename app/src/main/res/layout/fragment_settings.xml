@@ -20,28 +20,28 @@
                       android:layout_height="wrap_content"
                       android:orientation="vertical">
             <Button
-                    android:text="Editar"
+                    android:text="@string/button_edit_customer"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:background="#FFFAFA"
                     android:id="@+id/btEditCustomer"/>
 
             <Button
-                    android:text="Idioma"
+                    android:text="@string/button_language"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:id="@+id/btLanguage"
                     android:background="#FFFAFA"/>
 
             <Button
-                    android:text="Forma de Pagamentos "
+                    android:text="@string/button_payment_methods"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:id="@+id/btPaymentMethod"
                     android:background="#FFFAFA"/>
 
             <Button
-                    android:text="Sair"
+                    android:text="@string/button_exit"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:id="@+id/btExit"

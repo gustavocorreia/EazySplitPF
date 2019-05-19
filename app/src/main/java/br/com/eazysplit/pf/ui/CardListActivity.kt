@@ -67,9 +67,11 @@ class CardListActivity : AppCompatActivity() {
 
             if (querySnapshot != null) {
                 for (doc in querySnapshot) {
-                    val card = doc.toObject(Card::class.java)
-                    card.id = doc.id
-                    cardList.add(card)
+                    if(doc != null && doc.exists()){
+                        val card = doc.toObject(Card::class.java)
+                        card.id = doc.id
+                        cardList.add(card)
+                    }
                 }
             }
 
@@ -79,15 +81,18 @@ class CardListActivity : AppCompatActivity() {
     }
 
     fun listShow(cardList: MutableList<Card>){
-        rvCardList.adapter = CardListAdapter(this, cardList, {
-            goToEdit(it)
-        }, {
-            deleteCard(it)
-        })
 
-        val layoutManager = LinearLayoutManager(this)
+        if(cardList.size > 0){
+            rvCardList.adapter = CardListAdapter(this, cardList, {
+                goToEdit(it)
+            }, {
+                deleteCard(it)
+            })
 
-        rvCardList.layoutManager = layoutManager
+            val layoutManager = LinearLayoutManager(this)
+
+            rvCardList.layoutManager = layoutManager
+        }
     }
 
     fun deleteCard(card: Card){

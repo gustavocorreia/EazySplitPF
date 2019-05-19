@@ -42,6 +42,7 @@ class CardActivity : AppCompatActivity() {
 
         registerCard()
         inputMaskExpiration()
+        inputMaskCPF()
 
         if(intent.extras != null){
             loadForm()
@@ -143,5 +144,13 @@ class CardActivity : AppCompatActivity() {
 
     fun inputMaskExpiration(){
         etExpiration.addTextChangedListener(Mask.insert(etExpiration, "##/####"))
+    }
+
+    fun inputMaskCPF(){
+        etCPF.addTextChangedListener(Mask.insert(etCPF, "###.###.###-##"))
+    }
+
+    fun inputMaskCardNumber(){
+        etCardNumber.addTextChangedListener(Mask.insert(etCardNumber, "#### #### #### ####"))
     }
 }
