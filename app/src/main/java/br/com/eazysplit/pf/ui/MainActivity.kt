@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
 
         navMenu.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
-
     }
 
     override fun onStart() {
