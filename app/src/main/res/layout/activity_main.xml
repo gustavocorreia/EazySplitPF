@@ -9,7 +9,7 @@
         tools:context=".ui.MainActivity">
 
     <!-- Substituir por um fragment -->
-    <TextView
+ <!--s   <TextView
             style="@style/header_title"
             android:text="@string/text_name"
             android:gravity="center"
@@ -18,7 +18,7 @@
             android:id="@+id/tvHead" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_height="105dp" android:layout_width="447dp"
-            app:layout_constraintHorizontal_bias="0.277"/>
+            app:layout_constraintHorizontal_bias="0.277"/> -->
 
     <!--<EditText
             android:layout_width="match_parent"

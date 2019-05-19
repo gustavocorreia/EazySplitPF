@@ -9,19 +9,20 @@
     <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                  android:layout_height="wrap_content">
     <!-- Substituir por um fragment -->
-    <TextView
-            style="@style/header_title"
-            android:text="@string/text_name"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:background="#ff0000"
-            android:layout_height="150dp"
-            android:layout_width="429dp"
-            android:layout_marginTop="4dp"
-            android:scrollbarSize="35dp"
-            android:id="@+id/tvHead" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.277"/>
+        <TextView
+                style="@style/header_title"
+                android:text="@string/text_name"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:background="#ff0000"
+                android:layout_height="150dp"
+                android:layout_width="429dp"
+                android:scrollbarSize="35dp"
+                android:id="@+id/tvHead"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+        />
 
 
         <android.support.v7.widget.RecyclerView
