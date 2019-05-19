@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
 
         db = FirebaseFirestore.getInstance()
-        // loadData()
+        loadData()
     }
 
     private fun addFragment(fragment: Fragment) {

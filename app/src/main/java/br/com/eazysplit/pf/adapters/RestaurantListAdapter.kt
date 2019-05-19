@@ -2,8 +2,10 @@ package br.com.eazysplit.pf.adapters
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import br.com.eazysplit.pf.R
 import br.com.eazysplit.pf.models.Restaurant
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.restaurant_row.view.*
@@ -16,8 +18,10 @@ class RestaurantListAdapter(
     private val listener: (Restaurant) -> Unit
 ) : RecyclerView.Adapter<RestaurantListAdapter.RestaurantViewHolder>(){
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): RestaurantViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RestaurantViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.restaurant_row, viewGroup, false)
+
+        return RestaurantViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -37,6 +41,8 @@ class RestaurantListAdapter(
             Glide.with(context)
                 .load(restaurant.url_image)
                 .into(ivRestaurant)
+
+            listener(restaurant)
         }
     }
 }
