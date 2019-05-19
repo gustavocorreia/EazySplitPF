@@ -20,7 +20,7 @@
             android:layout_height="105dp" android:layout_width="447dp"
             app:layout_constraintHorizontal_bias="0.277"/>
 
-    <EditText
+    <!--<EditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:inputType="textAutoComplete"
@@ -43,7 +43,7 @@
             app:layout_constraintEnd_toEndOf="@+id/etSearchRestaurant"
             app:layout_constraintStart_toStartOf="@+id/etSearchRestaurant" app:layout_constraintHorizontal_bias="1.0"
             android:layout_marginTop="8dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/navMenu"/>
+            app:layout_constraintBottom_toTopOf="@+id/navMenu"/>-->
 
     <android.support.design.widget.BottomNavigationView
             android:id="@+id/navMenu"
