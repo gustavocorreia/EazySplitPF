@@ -9,8 +9,6 @@ import br.com.eazysplit.pf.R
 import br.com.eazysplit.pf.models.Restaurant
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.restaurant_row.view.*
-import kotlinx.android.synthetic.main.restaurante_row.view.*
-import kotlinx.android.synthetic.main.restaurante_row.view.ivRestaurant
 
 class RestaurantListAdapter(
     private val context: Context,

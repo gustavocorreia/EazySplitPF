@@ -40,8 +40,6 @@ class LoginActivity : AppCompatActivity() {
 
         setupButtonLogin()
         setupSignUpOtherCustomer()
-        setupButtonLoginGoogle()
-        setupButtonLoginFacebook()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -82,40 +80,6 @@ class LoginActivity : AppCompatActivity() {
     private fun setupSignUpOtherCustomer() {
         tvOtherCustomer.setOnClickListener {
             startActivity(Intent(this, CustomerActivity::class.java))
-        }
-    }
-
-    private fun setupButtonLoginGoogle() {
-        btGoogleLogin.setOnClickListener {
-            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.request_id_token))
-                .requestEmail()
-                .build()
-
-            val signInIntent = GoogleSignIn.getClient(this, gso).signInIntent
-            startActivityForResult(signInIntent, GOOGLE_SIGN_IN_REQUEST_CODE)
-        }
-    }
-
-    private fun setupButtonLoginFacebook() {
-        btFacebookLogin.setOnClickListener {
-            callbackManager = CallbackManager.Factory.create()
-
-            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email", "public_profile"))
-            LoginManager.getInstance().registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
-                override fun onSuccess(loginResult: LoginResult) {
-                    Log.d(TAG, "facebook:onSuccess:$loginResult")
-                    handleFacebookAccessToken(loginResult.accessToken)
-                }
-
-                override fun onCancel() {
-                    Log.d(TAG, "facebook:onCancel")
-                }
-
-                override fun onError(error: FacebookException) {
-                    Log.d(TAG, "facebook:onError", error)
-                }
-            })
         }
     }
 
