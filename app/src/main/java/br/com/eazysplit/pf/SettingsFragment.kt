@@ -8,8 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.support.v7.app.AppCompatActivity
-
-
+import android.content.Intent
+import br.com.eazysplit.pf.ui.CustomerActivity
 
 
 class SettingsFragment : Fragment() {

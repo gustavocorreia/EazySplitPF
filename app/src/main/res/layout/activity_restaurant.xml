@@ -34,7 +34,6 @@
     <TextView
             android:text="lasdasdsad dasdsadas asdasdasdsa
 
-
 asdsadsaaaada dsadasdsa asdasdasda asdsa"
             android:layout_width="match_parent"
             android:layout_height="96dp" android:id="@+id/textView2"/>
