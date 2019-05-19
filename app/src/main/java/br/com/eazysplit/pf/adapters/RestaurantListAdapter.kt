@@ -42,7 +42,10 @@ class RestaurantListAdapter(
                 .load(restaurant.url_image)
                 .into(ivRestaurant)
 
-            listener(restaurant)
+            setOnClickListener {
+                listener(restaurant)
+            }
+
         }
     }
 }

@@ -1,19 +1,42 @@
 package br.com.eazysplit.pf.ui
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import br.com.eazysplit.pf.R
 
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreSettings
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
+    private lateinit var mAuth : FirebaseAuth
+    private lateinit var mDB: FirebaseFirestore
+
+    override fun onStart() {
+        super.onStart()
+
+        mAuth = FirebaseAuth.getInstance()
+        mDB = FirebaseFirestore.getInstance()
+
+        mDB.firestoreSettings = FirebaseFirestoreSettings.Builder().setPersistenceEnabled(true).build()
+
+        if(mAuth.currentUser == null){
+            val loginIntent = Intent(this@MapsActivity, LoginActivity::class.java)
+            startActivity(loginIntent)
+            finish()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
+
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment

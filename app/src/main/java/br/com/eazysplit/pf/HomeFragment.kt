@@ -1,6 +1,7 @@
 package br.com.eazysplit.pf
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.DefaultItemAnimator
@@ -13,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import br.com.eazysplit.pf.adapters.RestaurantListAdapter
 import br.com.eazysplit.pf.models.Restaurant
+import br.com.eazysplit.pf.ui.RestaurantActivity
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -50,16 +52,18 @@ class HomeFragment : Fragment() {
             if (documentSnapshots != null) {
                 for (doc in documentSnapshots) {
                     val restaurant = doc.toObject(Restaurant::class.java)
+                    restaurant.id = doc.id
                     restaurantList.add(restaurant)
                 }
             }
 
-            // comentário teste
-
             recyclerView.layoutManager = LinearLayoutManager(activity)
 
             recyclerView.adapter = RestaurantListAdapter(activity!!, restaurantList) {
-                Toast.makeText(activity!!, it.name, Toast.LENGTH_LONG).show()
+                val restaurantIntent = Intent(activity, RestaurantActivity::class.java)
+                restaurantIntent.putExtra("RESTAURANT_ID", it.id)
+                startActivity(restaurantIntent)
+                activity!!.finish()
             }
 
             recyclerView.itemAnimator = DefaultItemAnimator()

@@ -3,6 +3,7 @@ package br.com.eazysplit.pf.ui
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import br.com.eazysplit.pf.R
 import br.com.eazysplit.pf.models.Card
@@ -58,12 +59,14 @@ class CardActivity : AppCompatActivity() {
             if(it.isSuccessful){
                 val card = it.result?.toObject(Card::class.java)
                 etCardNumber.setText(card!!.number)
-                etCardName.setText(card!!.name)
-                etCvc.setText(card!!.codeValidate)
-                etCPF.setText(card!!.document)
-                val expiration = card!!.monthValidate
+                etCardName.setText(card.name)
+                etCvc.setText(card.codeValidate)
+                etCPF.setText(card.document)
+                val expiration = card.monthValidate
                     .toString().padStart(2, '0') + "/" + card.yearValidate
                 etExpiration.setText(expiration)
+            } else{
+                Log.e("CardActivity", it.exception?.message)
             }
         }
 
