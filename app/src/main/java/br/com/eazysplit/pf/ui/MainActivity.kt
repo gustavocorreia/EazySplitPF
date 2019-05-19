@@ -79,8 +79,8 @@ class MainActivity : AppCompatActivity() {
 
             if (documentSnapshots != null) {
                 for (doc in documentSnapshots) {
-                    val note = doc.toObject(Restaurant::class.java)
-                    restaurantList.add(note)
+                    val restaurant = doc.toObject(Restaurant::class.java)
+                    restaurantList.add(restaurant)
                 }
             }
 

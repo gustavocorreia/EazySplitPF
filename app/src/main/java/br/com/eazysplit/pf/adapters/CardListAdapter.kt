@@ -12,7 +12,8 @@ import kotlinx.android.synthetic.main.card_row.view.*
 class CardListAdapter(
     private val context: Context,
     private val cards: MutableList<Card>,
-    private val listener: (Card) -> Unit
+    private val listener: (Card) -> Unit,
+    private val delListener: (Card) -> Unit
 ) : RecyclerView.Adapter<CardListAdapter.CardViewHolder>(){
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): CardViewHolder {
@@ -26,11 +27,11 @@ class CardListAdapter(
     }
 
     override fun onBindViewHolder(cardViewHolder: CardViewHolder, i: Int) {
-        cardViewHolder.bindView(cards[i], listener)
+        cardViewHolder.bindView(cards[i], listener, delListener)
     }
 
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        fun bindView(card: Card, listener: (Card) -> Unit) = with(itemView){
+        fun bindView(card: Card, listener: (Card) -> Unit, delListener: (Card) -> Unit) = with(itemView){
             tvCVC.text = card.codeValidate
             tvName.text = card.name
             tvNumber.text = card.number
@@ -43,6 +44,7 @@ class CardListAdapter(
             }
 
             btDelete.setOnClickListener {
+                delListener(card)
                 cards.remove(card)
 
             }
@@ -52,7 +54,4 @@ class CardListAdapter(
 
     }
 
-    interface ClickListener {
-        fun onClick(view: View, i: Int)
-    }
 }

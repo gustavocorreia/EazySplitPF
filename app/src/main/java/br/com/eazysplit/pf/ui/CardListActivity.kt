@@ -4,28 +4,27 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import br.com.eazysplit.pf.R
 import br.com.eazysplit.pf.adapters.CardListAdapter
 import br.com.eazysplit.pf.models.Card
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.firestore.*
 import kotlinx.android.synthetic.main.activity_card_list.*
 
 class CardListActivity : AppCompatActivity() {
 
     private lateinit var mAuth : FirebaseAuth
-    private lateinit var mDB: FirebaseDatabase
-    private lateinit var mReference: DatabaseReference
+    private lateinit var mDB: FirebaseFirestore
 
     override fun onStart() {
         super.onStart()
 
         mAuth = FirebaseAuth.getInstance()
-        mDB = FirebaseDatabase.getInstance()
-        mDB.setPersistenceEnabled(true)
+        mDB = FirebaseFirestore.getInstance()
 
-        mReference = mDB.reference
-        mReference.keepSynced(true)
+        mDB.firestoreSettings = FirebaseFirestoreSettings.Builder().setPersistenceEnabled(true).build()
+
 
         if(mAuth.currentUser == null){
             val loginIntent = Intent(this@CardListActivity, LoginActivity::class.java)
@@ -52,39 +51,42 @@ class CardListActivity : AppCompatActivity() {
 
     fun loadData(){
         val currentUser = mAuth.currentUser!!
-        val cardReference = mReference.child("users")
-                                                    .child(currentUser.uid).child("cards")
+        val cardsCollection = mDB.collection("users").document(currentUser.uid)
+            .collection("cards")
 
-        cardReference.addListenerForSingleValueEvent(object:ValueEventListener{
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if(dataSnapshot.exists()){
-                    val cardList = ArrayList<Card>()
+        cardsCollection.addSnapshotListener { querySnapshot, e ->
+            if (e != null) {
+                Log.e("MainActivity", "Listen failed!", e)
+                return@addSnapshotListener
+            }
 
-                    for(singleSnapshot in dataSnapshot.children){
-                        val card = singleSnapshot.getValue(Card::class.java)
+            val cardList = ArrayList<Card>()
 
-                        card?.let {
-                            it.id = singleSnapshot.key!!
-                            cardList.add(it)
-                        }
-                    }
-
-                    listShow(cardList)
+            if (querySnapshot != null) {
+                for (doc in querySnapshot) {
+                    val card = doc.toObject(Card::class.java)
+                    cardList.add(card)
                 }
             }
 
-            override fun onCancelled(p0: DatabaseError) {}
-        })
+            listShow(cardList)
+        }
+
     }
 
     fun listShow(cardList: MutableList<Card>){
         rvCardList.adapter = CardListAdapter(this, cardList, {
             goToEdit(it)
+        }, {
+            deleteCard(it)
         })
 
         val layoutManager = LinearLayoutManager(this)
 
         rvCardList.layoutManager = layoutManager
+    }
+
+    fun deleteCard(card: Card){
     }
 
     fun goToEdit(card: Card){
@@ -93,4 +95,5 @@ class CardListActivity : AppCompatActivity() {
         startActivity(cardIntent)
         finish()
     }
+
 }
