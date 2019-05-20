@@ -82,5 +82,6 @@
     <string name="button_language">Language</string>
     <string name="button_payment_methods">Payment Method</string>
     <string name="button_exit">Exit</string>
+    <string name="button_about">About</string>
 
 </resources>
