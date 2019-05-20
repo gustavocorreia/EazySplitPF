@@ -67,9 +67,11 @@ class CardListActivity : AppCompatActivity() {
 
             if (querySnapshot != null) {
                 for (doc in querySnapshot) {
-                    val card = doc.toObject(Card::class.java)
-                    card.id = doc.id
-                    cardList.add(card)
+                    if(doc != null && doc.exists()){
+                        val card = doc.toObject(Card::class.java)
+                        card.id = doc.id
+                        cardList.add(card)
+                    }
                 }
             }
 

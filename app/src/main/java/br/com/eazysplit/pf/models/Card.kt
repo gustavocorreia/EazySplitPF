@@ -1,10 +1,11 @@
 package br.com.eazysplit.pf.models
 
-import com.google.firebase.database.Exclude
+import com.google.firebase.firestore.Exclude
+
 
 data class Card (
     @Exclude
-    var id:String,
+    var id:String = "",
 
     var codeValidate: String,
     var document: String,
