@@ -49,6 +49,7 @@ class CardActivity : AppCompatActivity() {
         }
     }
 
+    //
     fun loadForm(){
         cardID = intent.extras.getString("CARD_ID")
         val id = mAuth.currentUser!!.uid
