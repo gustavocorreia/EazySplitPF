@@ -38,7 +38,6 @@ class SettingsFragment: Fragment() {
         btAbout.setOnClickListener {
             val aboutIntent = Intent(activity!!, AboutActivity::class.java)
             startActivity(aboutIntent)
-            activity!!.finish()
         }
 
         btPaymentMethod.setOnClickListener {
