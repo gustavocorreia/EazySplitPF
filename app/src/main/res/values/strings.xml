@@ -12,7 +12,7 @@
     <string name="edittext_password">Password</string>
     <string name="edittext_name">Name</string>
     <string name="edittext_birth_date">Birth Date</string>
-    <string name="button_login">Log In</string>
+    <string name="button_login">Login</string>
     <string name="link_forgotpass">Forgot my password</string>
     <string name="edittext_password_confirmation">Password Confirmation</string>
     <string name="edittext_phone">Cell Phone</string>
