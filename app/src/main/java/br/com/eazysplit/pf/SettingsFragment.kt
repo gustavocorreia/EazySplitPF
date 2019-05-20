@@ -32,7 +32,6 @@ class SettingsFragment: Fragment() {
         btEditCustomer.setOnClickListener {
             val customerIntent = Intent(activity!!, CustomerActivity::class.java)
             startActivity(customerIntent)
-            activity!!.finish()
         }
 
         btLanguage.setOnClickListener {
@@ -42,7 +41,6 @@ class SettingsFragment: Fragment() {
         btPaymentMethod.setOnClickListener {
             val cardListIntent = Intent(activity!!, CardListActivity::class.java)
             startActivity(cardListIntent)
-            activity!!.finish()
         }
 
         btExit.setOnClickListener {

@@ -24,7 +24,6 @@ import com.google.firebase.Timestamp
 import com.squareup.picasso.Picasso
 import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
-import java.io.IOException
 
 
 class CustomerActivity : AppCompatActivity() {

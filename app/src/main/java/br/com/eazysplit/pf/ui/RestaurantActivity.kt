@@ -27,7 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
 import kotlinx.android.synthetic.main.activity_restaurant.*
 
-class RestaurantActivity : AppCompatActivity() ,OnMapReadyCallback{
+class RestaurantActivity : AppCompatActivity(), OnMapReadyCallback{
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mDB: FirebaseFirestore
@@ -138,16 +138,7 @@ class RestaurantActivity : AppCompatActivity() ,OnMapReadyCallback{
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin))
         )
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(fiaPaulista, 15f))
-        //  adicionarFormaCicular(fiaPaulista)
 
-    }
-    private fun adicionarFormaCicular(latLng: LatLng){
-        val circulo = CircleOptions()
-        circulo.center(latLng)
-        circulo.radius(200.0)
-        circulo.fillColor(Color.argb(128,0,51,102))
-        circulo.strokeColor(Color.argb(128,0,51,102))
-        mMap.addCircle(circulo)
     }
 
     private fun loadRestaurant() {
@@ -160,10 +151,9 @@ class RestaurantActivity : AppCompatActivity() ,OnMapReadyCallback{
             restaurantDocument.get().addOnCompleteListener {
                 if (it.isSuccessful) {
                     val restaurant = it.result?.toObject(Restaurant::class.java)
-                    tvRating.text = "avaliação" + restaurant!!.rating.toString() + "/10"
+                    tvRating.text = "avaliação " + restaurant!!.rating.toString() + "/10"
                     tvRestaurantTitle.text = restaurant.name
                     tvDescription.text = restaurant.description
-                    //var geo = restaurant.geolocalization
 
                     Glide.with(this)
                         .load(restaurant.url_image)
@@ -174,12 +164,10 @@ class RestaurantActivity : AppCompatActivity() ,OnMapReadyCallback{
                 }
             }
         }
-
-
     }
 
-
-    private fun SupportMapFragment.getMapAsync(restaurantActivity: RestaurantActivity) {
-
+    override fun onBackPressed() {
+        finish()
     }
+
 }

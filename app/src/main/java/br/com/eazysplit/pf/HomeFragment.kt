@@ -11,22 +11,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import br.com.eazysplit.pf.adapters.RestaurantListAdapter
 import br.com.eazysplit.pf.models.Restaurant
 import br.com.eazysplit.pf.ui.RestaurantActivity
 import com.google.firebase.firestore.FirebaseFirestore
 
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//private const val ARG_PARAM1 = "param1"
-//private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- *
- */
 class HomeFragment : Fragment() {
 
     override fun onCreateView(
@@ -63,7 +53,6 @@ class HomeFragment : Fragment() {
                 val restaurantIntent = Intent(activity, RestaurantActivity::class.java)
                 restaurantIntent.putExtra("RESTAURANT_ID", it.id)
                 startActivity(restaurantIntent)
-                activity!!.finish()
             }
 
             recyclerView.itemAnimator = DefaultItemAnimator()

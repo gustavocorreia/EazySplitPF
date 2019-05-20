@@ -24,33 +24,12 @@
             android:roundIcon="@drawable/logo"
             android:supportsRtl="true"
             android:theme="@style/Default">
-        <activity
-                android:name=".ui.fragments.MenuActivity"
-                android:label="@string/title_activity_menu"
-                android:theme="@style/Default.NoActionBar">
-        </activity>
-        <activity android:name=".ui.SettingsActivity">
-        </activity>
-        <activity android:name=".ui.CheckInActivity">
-        </activity>
         <activity android:name=".ui.RestaurantActivity">
         </activity>
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        -->
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyB8LRvuTpJn62nTG-zZijkiL6YNyU526PU"/>
 
-        <activity
-                android:name=".ui.MapsActivity"
-                android:label="@string/title_activity_maps">
-        </activity>
         <activity android:name=".ui.CardActivity">
         </activity>
         <activity android:name=".ui.CustomerActivity">
@@ -71,27 +50,6 @@
         <activity android:name=".ui.LoginActivity">
         </activity>
         <activity android:name=".ui.MainActivity">
-        </activity>
-
-        <meta-data
-                android:name="com.facebook.sdk.ApplicationId"
-                android:value="@string/facebook_app_id"/>
-
-        <activity
-                android:name="com.facebook.FacebookActivity"
-                android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-                android:label="@string/app_name"/>
-        <activity
-                android:name="com.facebook.CustomTabActivity"
-                android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-
-                <data android:scheme="@string/fb_login_protocol_scheme"/>
-            </intent-filter>
         </activity>
     </application>
 

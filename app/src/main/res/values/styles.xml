@@ -49,21 +49,6 @@
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="button_facebook" parent="margin_default">
-        <item name="android:background">@color/com_facebook_button_background_color</item>
-        <item name="android:text">@string/button_facebook</item>
-        <item name="android:textColor">#ffffff</item>
-        <item name="android:layout_marginTop">20dp</item>
-        <item name="android:textSize">18sp</item>
-    </style>
-
-    <style name="button_google" parent="margin_default">
-        <item name="android:background">@color/colorGoogle</item>
-        <item name="android:text">@string/button_google</item>
-        <item name="android:textColor">#ffffff</item>
-        <item name="android:layout_marginTop">20dp</item>
-        <item name="android:textSize">18sp</item>
-    </style>
     <style name="Default.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
