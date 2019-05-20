@@ -7,11 +7,11 @@ data class Card (
     @Exclude
     var id:String = "",
 
-    var codeValidate: String,
-    var document: String,
-    var flag: String,
-    var monthValidate: Int,
-    var name: String,
-    var number: String,
-    var yearValidate: Int
+    var codeValidate: Int = 0,
+    var document: String = "",
+    var flag: String = "",
+    var monthValidate: Int = 0,
+    var name: String = "",
+    var number: String = "",
+    var yearValidate: Int = 0
 )

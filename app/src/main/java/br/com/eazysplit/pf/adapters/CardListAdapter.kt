@@ -32,7 +32,7 @@ class CardListAdapter(
 
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         fun bindView(card: Card, listener: (Card) -> Unit, delListener: (Card) -> Unit) = with(itemView){
-            tvCVC.text = card.codeValidate
+            tvCVC.text = card.codeValidate.toString()
             tvName.text = card.name
             tvNumber.text = card.number
             tvExpiration.text = card.monthValidate.toString().padStart(2, '0') + "/" + card.yearValidate.toString()

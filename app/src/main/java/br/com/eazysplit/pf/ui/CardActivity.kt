@@ -106,7 +106,7 @@ class CardActivity : AppCompatActivity() {
     private fun mountCard() : Card {
         val expiration = etExpiration.text.toString().split("/")
 
-        return Card("", etCvc.text.toString(), etCPF.text.toString(),"MasterCard", expiration[0].toInt(), etCardName.text.toString(), etCardNumber.text.toString(), expiration[1].toInt())
+        return Card("", etCvc.text.toString().toInt(), etCPF.text.toString(),"MasterCard", expiration[0].toInt(), etCardName.text.toString(), etCardNumber.text.toString(), expiration[1].toInt())
     }
 
     private fun validateFields() : Boolean {
