@@ -80,4 +80,5 @@
     <string name="button_language">Idioma</string>
     <string name="button_payment_methods">Forma de Pagamentos</string>
     <string name="button_exit">Sair</string>
+    <string name="button_about">Sobre</string>
 </resources>

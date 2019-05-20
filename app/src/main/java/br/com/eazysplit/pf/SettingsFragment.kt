@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.content.Intent
 import android.widget.Button
+import br.com.eazysplit.pf.ui.AboutActivity
 import br.com.eazysplit.pf.ui.CardListActivity
 import br.com.eazysplit.pf.ui.CustomerActivity
 import br.com.eazysplit.pf.ui.LoginActivity
@@ -25,7 +26,7 @@ class SettingsFragment: Fragment() {
         val mAuth = FirebaseAuth.getInstance()
 
         val btEditCustomer = view.findViewById(R.id.btEditCustomer) as Button
-        val btLanguage = view.findViewById(R.id.btLanguage) as Button
+        val btAbout = view.findViewById(R.id.btAbout) as Button
         val btPaymentMethod = view.findViewById(R.id.btPaymentMethod) as Button
         val btExit = view.findViewById(R.id.btExit) as Button
 
@@ -35,8 +36,10 @@ class SettingsFragment: Fragment() {
             activity!!.finish()
         }
 
-        btLanguage.setOnClickListener {
-
+        btAbout.setOnClickListener {
+            val aboutIntent = Intent(activity!!, AboutActivity::class.java)
+            startActivity(aboutIntent)
+            activity!!.finish()
         }
 
         btPaymentMethod.setOnClickListener {
