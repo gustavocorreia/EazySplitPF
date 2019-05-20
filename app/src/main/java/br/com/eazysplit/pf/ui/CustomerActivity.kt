@@ -21,8 +21,11 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import com.google.firebase.Timestamp
+import com.squareup.picasso.Picasso
 import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
+import java.io.IOException
+
 
 class CustomerActivity : AppCompatActivity() {
 
@@ -139,7 +142,7 @@ class CustomerActivity : AppCompatActivity() {
                 storageRef.putBytes(imageByteArray)
                     .addOnCompleteListener {
                         storageRef.downloadUrl.addOnCompleteListener {
-                            user.url_image = it.toString()
+                            Picasso.get().load(it.result).into(ivCustomer)
                             performUserChange(user)
                         }
                     }
@@ -216,9 +219,10 @@ class CustomerActivity : AppCompatActivity() {
 
         etName.setText(mAuth.currentUser?.displayName)
         etEmail.setText(mAuth.currentUser?.email)
-        ivCustomer.setImageURI(mAuth.currentUser?.photoUrl)
         etPassword.visibility = View.INVISIBLE
         etPasswordConfirm.visibility = View.INVISIBLE
+
+        Picasso.get().load(mAuth.currentUser?.photoUrl).into(ivCustomer)
 
         mDB.collection(COLLECTION_USERS).document(uid).get().addOnCompleteListener {
             if (it.isSuccessful) {
