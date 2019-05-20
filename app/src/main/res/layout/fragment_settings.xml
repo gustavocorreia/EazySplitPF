@@ -27,10 +27,10 @@
                     android:id="@+id/btEditCustomer"/>
 
             <Button
-                    android:text="@string/button_language"
+                    android:text="@string/button_about"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:id="@+id/btLanguage"
+                    android:id="@+id/btAbout"
                     android:background="#FFFAFA"/>
 
             <Button
